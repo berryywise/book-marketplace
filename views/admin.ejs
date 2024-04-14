@@ -16,9 +16,20 @@
 
     <img class="d-none d-lg-block" src="/stylesheets/logo.svg">
     <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+    <% if (typeof user != "undefined" && user.tier) { %>
+        <p class="tier"><%= user.tier  %></p>
+    <% } %>
     <hr class="sidebar-divider my-0">
                 <ul>
-                    <li class="sidebar-card active"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+                    <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+                    <% if (user && user.isAdmin) { %>
+                        <li class="sidebar-card active">
+                          <a href="/adminpanel">
+                            <i class="bi bi-person-raised-hand"></i>
+                            <span> Admin Panel</span>
+                          </a>
+                        </li>
+                        <% } %>
                     <hr class="sidebar-divider my-0">
                     <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i></i><span> Your Products</span></a></li>
                     <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i></i><span> Payout</span></a></li>
@@ -37,12 +48,11 @@
 
                 <div class="dashboard-header">
                     <% if (user && user.isAdmin) { %>
-                        <h1>Welcome, Admin <%= user.username  %></h1>
+                        <h1>Welcome, Admin!</h1>
                     <% } else { %>
                         <h1>What are you doing here bruh!?</h1>
                     <% } %>
                 </div>
-
 
                 <div>
                     <% if (typeof data !== 'undefined') { %>

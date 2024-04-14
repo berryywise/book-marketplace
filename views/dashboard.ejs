@@ -27,6 +27,14 @@
               <span> Dashboard</span>
             </a>
           </li>
+          <% if (user && user.isAdmin) { %>
+          <li class="sidebar-card">
+            <a href="/adminpanel">
+              <i class="bi bi-person-raised-hand"></i>
+              <span> Admin Panel</span>
+            </a>
+          </li>
+          <% } %>
           <hr class="sidebar-divider my-0">
           <li class="sidebar-card">
             <a href="/products">
@@ -65,14 +73,14 @@
         </ul>
       </div>
       <div class="dashboard-info">
-        <div class="dashboard-header"><% if (user && user.isAdmin) { %> <button class="btn btn-primary add-product-button">
-            <a href="/adminpanel">Admin Panel</a>
-          </button><% } %><% if (user && !user.emailverified) { %> <h6 class="alert alert-warning">Your email is not verified yet, please confirm your email address. <form action="/resend-verification" method="post">
+        <div class="dashboard-header">
+        <% if (user && !user.emailverified) { %> <h6 class="alert alert-warning">Your email is not verified yet, please confirm your email address. <form action="/resend-verification" method="post">
               <input type="hidden" name="elementId">
               <button class="btn alert-secondary" type="submit">
                 </i>Click here to resend confirmation mail </button>
             </form>
-          </h6><% } %><% if (typeof success != "undefined" && success) { %> <div class="alert alert-success" role="alert"><%= success %> </div><% } %> </div>
+          </h6><% } %>
+          <% if (typeof success != "undefined" && success) { %> <div class="alert alert-success" role="alert"><%= success %> </div><% } %> </div>
         <div class="card col-12 col-lg-2 border-left-primary shadow py-2 margin-center-d">
           <div class="card-body card-blue">
             <div class=" no-gutters align-items-center">

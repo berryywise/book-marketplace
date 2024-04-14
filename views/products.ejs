@@ -21,6 +21,14 @@
         <hr class="sidebar-divider my-0">
         <ul>
             <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+            <% if (user && user.isAdmin) { %>
+                <li class="sidebar-card">
+                  <a href="/adminpanel">
+                    <i class="bi bi-person-raised-hand"></i>
+                    <span> Admin Panel</span>
+                  </a>
+                </li>
+                <% } %>
             <hr class="sidebar-divider my-0">
             <li class="sidebar-card active"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
             <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
