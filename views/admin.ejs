@@ -46,26 +46,36 @@
             </div>
             <div class="dashboard-info">
 
-                <div class="dashboard-header">
-                    <% if (user && user.isAdmin) { %>
-                        <h1>Welcome, Admin!</h1>
-                    <% } else { %>
-                        <h1>What are you doing here bruh!?</h1>
-                    <% } %>
-                </div>
 
-                <div>
-                    <% if (typeof data !== 'undefined') { %>
-                        <h1>Current stats:</h1>
-                        <h2>Max product price: $<%= data.max_product  %></h2>
-                        <h2>Max product limit: $<%= data.max_limit  %></h2>
-                        <h2>Max sales per day: <%= data.max_sales  %> sales</h2>
-                        <h2>User in review after next account days: <%= data.days %> days from new account</h2>
-                        <h2>Sales are up: <%= data.toggled %></h2>
-                        <h2>Sales schedule: <%= data.schedule %></h2>
-                        <h2>Products to be reviewed: <%= data.reviewed %></h2>
-                    <% } %>
-                </div>
+                    <% products.forEach(element => { %>
 
+                        <div class="row">
+                            <div class="parent col-12 col-lg-4">
+                                <div class="card" style="width: 18rem;">
+            
+                                    <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= element.name %></h5>
+                                        <p class="card-text"><%=element.description%></p>
+                                        <p class="card-text">Product owner: <%=element.owner_username%></p>
+                                        <p class="card-text">Account created: <%=element.user.accountcreated%></p>
+                                        <p class="card-text">Link to <a href="<%=element.file%>">PDF</a></p>
+                                        <p class="card-text">Link to <a href="<%=element.thumbnail%>">Thumbnail</a></p>
+                                        <p class="card-text card-price">$<%=element.price%></p>
+                                        <form action="/adminpanel/approve" method="post">
+                                            <input type="hidden" name="elementId" value="<%= element._id %>">
+                                            <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>
+                                        </form>
+                                        <form action="/adminpanel/decline" method="post">
+                                            <input type="hidden" name="elementId" value="<%= element._id %>">
+                                            <button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i>Decline</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                        <% }) %>
 </body>
 </html>

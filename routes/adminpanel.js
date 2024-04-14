@@ -1,36 +1,42 @@
 const express = require("express");
 const router = require("express").Router();
 const Admin = require("../models/admin");
+const Product = require("../models/products");
 const ensureAuthenticated = require("../middleware/auth");
 const ensureAdmin = require("../middleware/admin");
 
 router.get("/", ensureAuthenticated, ensureAdmin, async (req, res) => {
-  const adminData = await Admin.findOne({});
+  const products = await Product.find({ in_review: true, deleted: false, declined: false }).populate("user");
 
-  const data = {
-    max_product: adminData.max_product_price,
-    max_limit: adminData.max_product_limit,
-    max_sales: adminData.max_sales_day,
-    toggled: adminData.sales_are_running,
-    days: adminData.admin_review_days,
-    schedule: adminData.cron_schedule,
-    reviewed: adminData.products_in_review,
-  };
+  res.render("admin", { user: req.user, products });
+});
 
-  if (data.schedule === "*/2 * * * *") {
-    data.schedule = "2 minutes"
-  } else {
-    data.schedule = "24 hours"
+router.post("/approve", ensureAuthenticated, ensureAdmin, async (req, res) => {
+  try {
+    const itemId = req.body.elementId;
+
+    await Product.findByIdAndUpdate(itemId, { $set: { in_review: false } });
+
+    res.redirect("/adminpanel");
+
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).send("Internal Server Error");
   }
+});
 
-  if(data.toggled === false) {
-    data.toggled = "Not running!"
-  } else {
-    data.schedule = "Sales are live!"
+router.post("/decline", ensureAuthenticated, ensureAdmin, async (req, res) => {
+  try {
+    const itemId = req.body.elementId;
+
+    await Product.findByIdAndUpdate(itemId, { $set: { declined: true } });
+
+    res.redirect("/adminpanel");
+
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).send("Internal Server Error");
   }
-
-
-  res.render("admin", { user: req.user, data });
 });
 
 module.exports = router;
