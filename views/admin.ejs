@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+            <div class="sidebar-container">
+
+    <img class="d-none d-lg-block" src="/stylesheets/logo.svg">
+    <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+    <hr class="sidebar-divider my-0">
+                <ul>
+                    <li class="sidebar-card active"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+                    <hr class="sidebar-divider my-0">
+                    <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i></i><span> Your Products</span></a></li>
+                    <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i></i><span> Payout</span></a></li>
+                    <li class="sidebar-card"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
+                    <hr class="sidebar-divider my-0">
+                    <li class="sidebar-card"><a href="/logout"><i class="bi bi-power"></i><span> Log Out</span></a></li>
+
+                    <div class="sidebar-card d-none d-lg-flex">
+                        <img class="sidebar-card-illustration mb-2" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_rocket.svg" alt="...">
+                        <p class="text-center mb-2"><strong>Book Maniac PRO</strong> is packed with premium features, components, and more!</p>
+                        <a class="btn btn-success btn-sm" href="/premium">Upgrade to Pro!</a>
+                    </div>
+                </ul>
+            </div>
+            <div class="dashboard-info">
+
+                <div class="dashboard-header">
+                    <% if (user && user.isAdmin) { %>
+                        <h1>Welcome, Admin <%= user.username  %></h1>
+                    <% } else { %>
+                        <h1>What are you doing here bruh!?</h1>
+                    <% } %>
+                </div>
+
+
+                <div>
+                    <% if (typeof data !== 'undefined') { %>
+                        <h1>Current stats:</h1>
+                        <h2>Max product price: $<%= data.max_product  %></h2>
+                        <h2>Max product limit: $<%= data.max_limit  %></h2>
+                        <h2>Max sales per day: <%= data.max_sales  %> sales</h2>
+                        <h2>User in review after next account days: <%= data.days %> days from new account</h2>
+                        <h2>Sales are up: <%= data.toggled %></h2>
+                        <h2>Sales schedule: <%= data.schedule %></h2>
+                        <h2>Products to be reviewed: <%= data.reviewed %></h2>
+                    <% } %>
+                </div>
+
+</body>
+</html>

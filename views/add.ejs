@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar-container">
+        <a href="/dashboard"><img class="d-none d-lg-block" src="/stylesheets/logo.svg"></a>
+        <% if (typeof user != "undefined" && user.tier) { %>
+          <p class="tier"><%= user.tier  %></p>
+        <% } %>
+        <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+        <hr class="sidebar-divider my-0">
+        <ul>
+            <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card active"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
+            <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
+            <li class="sidebar-card"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/logout"><i class="bi bi-power"></i><span> Log Out</span></a></li>
+                <div class="sidebar-card d-none d-lg-flex">
+                  <img class="sidebar-card-illustration mb-2" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_rocket.svg" alt="...">
+                        <p class="text-center mb-2"><strong>Book Maniac PRO</strong> is packed with premium features, components, and more!</p>
+                            <a class="btn btn-success btn-sm" href="https://bookmaniac.net/pricing/">Upgrade to Pro!</a>
+                </div>
+        </ul>
+    </div>
+        <div class="product-info">
+            <h1>Add New Product</h1>
+            <% if (errors && errors.length > 0) { %>
+                <div class="alert alert-danger" role="alert">
+                  <ul>
+                    <% errors.forEach(error => { %>
+                      <li><%= error.msg %></li>
+                    <% }) %>
+                  </ul>
+                </div>
+              <% } %>
+            <div class="add-settings">
+                <form class="settings-info" action="/products/add" method="post" enctype="multipart/form-data">
+                    <label for="name">Name of product</label>
+                    <input class="form-control" type="text" minlength="3" maxlength="100" id="name" name="name" required>
+                    <label for="price">Price of product</label>
+                    <div class="price-control"><input class="form-control" type="text" pattern="[0-9]+(\.[0-9]+)?" title="Enter a valid price (e.g., 10 or 10.99)" min="1" max="<%= adminDb.max_product_price %>" id="price" name="price" required></div>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" type="text" minlength="3" maxlength="300" id="description" name="description" required></textarea>
+                    <label for="pdfFile">Upload File:</label>
+                    <input class="form-control" type="file" name="pdfFile" id="pdfFile">
+                    <label for="thumbnailFile">Upload Thumbnail:</label>
+                    <input class="form-control" type="file" id="thumbnailFile" name="thumbnailFile" accept="image/*">
+                    <p>Your image should be square, at least 600x600px, and JPG, PNG format.</p>
+                    <button class="btn btn-primary" type="submit">Make Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

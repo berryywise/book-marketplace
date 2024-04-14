@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Settings - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar-container">
+        <a href="/dashboard"><img class="d-none d-lg-block" src="/stylesheets/logo.svg"></a>
+        <% if (typeof user != "undefined" && user.tier) { %>
+          <p class="tier"><%= user.tier  %></p>
+        <% } %>
+        <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+        <hr class="sidebar-divider my-0">
+        <ul>
+            <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
+            <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
+            <li class="sidebar-card active"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/logout"><i class="bi bi-power"></i><span> Log Out</span></a></li>
+                <div class="sidebar-card d-none d-lg-flex">
+                  <img class="sidebar-card-illustration mb-2" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_rocket.svg" alt="...">
+                        <p class="text-center mb-2"><strong>Book Maniac PRO</strong> is packed with premium features, components, and more!</p>
+                        <a class="btn btn-success btn-sm" href="https://bookmaniac.net/pricing/">Upgrade to Pro!</a>
+                </div>
+        </ul>
+    </div>
+        <div class="edit-settings">
+            <h1>Edit Settings</h1>
+            <% if (errors && errors.length > 0) { %>
+              <div class="error-messages">
+                <ul>
+                  <% errors.forEach(error => { %>
+                  <div class="alert alert-danger" role="alert">
+  <%= error.msg %>
+</div>
+                  
+                  <% }) %>
+                </ul>
+              </div>
+            <% } %>
+            <form class="settings-info" action="/settings/edit" method="post">
+
+            <label for="firstname">Firstname</label>
+            <input class="form-control" type="text" minlength="1" maxlength="15" value="<%= user.firstname %>" id="firstname" name="firstname">
+            <label for="lastname">Lastname</label>
+            <input class="form-control" type="text" minlength="1" maxlength="15" value="<%= user.lastname %>" id="lastname" name="lastname">
+            <h3>Payout Options</h3>
+            <div>
+
+              <div>
+                <h5>Select payment method</h5>
+                <select class="form-control" id="paymentMethodSelect" name="payoutoption" onchange="handleClick()">
+                  <option value="iban">IBAN</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="btc">Bitcoin (BTC)</option>
+                  <option value="eth">Ethereum (ETH)</option>
+                  <option value="ltc">Litecoin (LTC)</option>
+                </select>
+              </div>
+      
+                <div id="ibanInput" style="">
+                  <label for="bank-account">IBAN</label>
+                  <input class="form-control" type="text" minlength="15" maxlength="35" value="<%= user.iban %>" id="iban" name="iban">
+                </div>
+
+                <div id="btcInput" style="display: none;">
+                  <label for="btc">Bitcoin Address</label>
+                  <input class="form-control" type="text" minlength="30" maxlength="64" value="<%= user.btc_wallet %>" id="btc" name="btc">
+                </div>
+              
+                <div id="ethInput" style="display: none;">
+                  <label for="eth">Ethereum Address</label>
+                  <input class="form-control" type="text" minlength="40" maxlength="44" value="<%= user.eth_wallet %>" id="eth" name="eth">
+                </div>
+              
+                <div id="ltcInput" style="display: none;">
+                  <label for="ltc">Litecoin Address</label>
+                  <input class="form-control" type="text" minlength="25" maxlength="36" value="<%= user.ltc_wallet %>" id="ltc" name="ltc">
+                </div>
+
+                <div id="paypalInput" style="display: none;">
+                  <label for="ltc">PayPal Address</label>
+                  <input class="form-control" type="email" value="<%= user.paypal_wallet %>" id="paypal" name="paypal">
+                </div>
+              </div>
+
+              <label for="address">Address</label>
+              <input class="form-control" type="text" minlength="1" maxlength="40" value="<%= user.address %>" id="address" name="address">
+              <div>
+                <label for="city">City</label>
+                <input class="form-control" type="text" minlength="1" maxlength="15" value="<%= user.city %>" id="city" name="city">
+                <label for="postalcode">Postal Code</label>
+                <input class="form-control" class="form-control" type="text" minlength="1" maxlength="10" value="<%= user.postalcode %>" id="postalcode" name="postalcode">
+              </div>
+              <label for="country">Country</label>
+              <input class="form-control" type="text" minlength="1" maxlength="15" value="<%= user.country %>" id="country" name="country">
+              <label for="phonenumber">Phone Number</label>
+              <input class="form-control" type="text" minlength="1" maxlength="17" value="<%= user.phonenumber %>" id="phonenumber" name="phonenumber">
+              <label for="dateofbirth">Date of Birth</label>
+              <input class="form-control" type="date" value="<%= user.dateofbirth %>" id="dateofbirth" name="dateofbirth">
+              <br>
+              <button class="btn btn-primary" type="submit">Save</button>
+              <button class="btn btn-primary"><a href="/settings">Cancel</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+
+function togglePayment(payment) {
+
+    const btcInput = document.getElementById('btcInput');
+    const ethInput = document.getElementById('ethInput');
+    const ltcInput = document.getElementById('ltcInput');
+    const ibanInput = document.getElementById('ibanInput');
+    const paypalInput = document.getElementById('paypalInput');
+
+
+    ibanInput.style.display = payment === 'iban' ? 'block' : 'none';
+    btcInput.style.display = payment === 'btc' ? 'block' : 'none';
+    ethInput.style.display = payment === 'eth' ? 'block' : 'none';
+    ltcInput.style.display = payment === 'ltc' ? 'block' : 'none';
+    paypalInput.style.display = payment === 'paypal' ? 'block' : 'none';
+  }
+
+function handleClick() {
+
+  const paymentMethod = document.getElementById("paymentMethodSelect")
+  
+  togglePayment(paymentMethod.value) 
+}
+  
+</script>
+
+</html>
+
+

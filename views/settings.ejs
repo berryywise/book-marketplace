@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar-container">
+        <a href="/dashboard"><img class="d-none d-lg-block" src="/stylesheets/logo.svg"></a>
+        <% if (typeof user != "undefined" && user.tier) { %>
+            <p class="tier"><%= user.tier  %></p>
+        <% } %>
+        <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+        <hr class="sidebar-divider my-0">
+        <ul>
+            <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
+            <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
+            <li class="sidebar-card active"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/logout"><i class="bi bi-power"></i><span> Log Out</span></a></li>
+                <div class="sidebar-card d-none d-lg-flex">
+                    <img class="sidebar-card-illustration mb-2" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_rocket.svg" alt="...">
+                    <p class="text-center mb-2"><strong>Book Maniac PRO</strong> is packed with premium features, components, and more!</p>
+                    <a class="btn btn-success btn-sm" href="https://bookmaniac.net/pricing/">Upgrade to Pro!</a>
+                </div>
+        </ul>
+    </div>
+        <div class="settings-page">
+            <h1>Settings</h1>
+            <button class="btn btn-primary add-product-button"><a href="/settings/edit">Edit Settings</a></button>
+            <form class="settings-info">
+            <label for="email">E-mail</label>
+            <input type="input" value="<%= user.email %>" class="form-control" disabled>
+            <label for="username">Username</label>
+            <input type="input" value="<%= user.username %>" class="form-control" disabled>
+            <label for="firstname">Firstname</label>
+            <input type="input" value="<%= user.firstname %>" class="form-control" disabled>
+            <label for="lastname">Lastname</label>
+            <input type="input" value="<%= user.lastname %>" class="form-control" disabled>
+            <h3>Payout Options</h3>
+
+              <label for="payoutoption"><%= payoutOption %></label>
+
+              <input type="input" value="<%= payoutValue %>" id="payoutoption" class="form-control" disabled>
+
+              <label for="address">Address</label>
+              <input type="input" value="<%= user.address %>" class="form-control" disabled>
+              <div>
+                <label for="city">City</label>
+                <input type="input" value="<%= user.city %>" class="form-control" disabled>
+                <label for="postalcode">Postal Code</label>
+                <input type="input" value="<%= user.postalcode %>" class="form-control" disabled>
+              </div>
+              <label for="country">Country</label>
+              <input type="input" value="<%= user.country %>" class="form-control" disabled>
+              <label for="number">Phone Number</label>
+              <input type="input" value="<%= user.phonenumber %>" class="form-control" disabled>
+              <label for="dateofbirth">Date of Birth</label>
+              <input type="input" value="<%= user.dateofbirth %>" class="form-control" disabled>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payout - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar-container">
+        <a href="/dashboard"><img class="d-none d-lg-block" src="/stylesheets/logo.svg"></a>
+        <% if (typeof user != "undefined" && user.tier) { %>
+            <p class="tier"><%= user.tier  %></p>
+        <% } %>
+        <img class="d-block d-lg-none" src="/stylesheets/favicon.svg">
+        <hr class="sidebar-divider my-0">
+        <ul>
+            <li class="sidebar-card"><a href="/dashboard"><i class="bi bi-bar-chart-fill"></i><span> Dashboard</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
+            <li class="sidebar-card active"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
+            <li class="sidebar-card"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
+            <hr class="sidebar-divider my-0">
+            <li class="sidebar-card"><a href="/logout"><i class="bi bi-power"></i><span> Log Out</span></a></li>
+                <div class="sidebar-card d-none d-lg-flex">
+                    <img class="sidebar-card-illustration mb-2" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_rocket.svg" alt="...">
+                    <p class="text-center mb-2"><strong>Book Maniac PRO</strong> is packed with premium features, components, and more!</p>
+                    <a class="btn btn-success btn-sm" href="https://bookmaniac.net/pricing/">Upgrade to Pro!</a>
+                </div>
+        </ul>
+    </div>
+        <div class="payout-info">
+            <div class="payout-header">
+                <h1>Payout</h1>
+                <% if (!user.inreview) { %>
+                    <div class="alert alert-success" role="alert"><i class="bi bi-check-circle-fill"></i> Your account has been verified.</div>
+                    <%} else { %>
+                    <div class="alert alert-warning" role="alert"><i class="bi bi-hourglass-bottom"></i> Your account is currently being reviewed by our sales team. Don't worry! We have to review every account before the first pay-out is issued!
+                    </div>
+                    <% } %>
+                <div class="card border-left-primary shadow py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                <i class="bi bi-currency-exchange"></i> Balance</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><h2>$<%= userbalance  %></h2></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bi bi-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                <div class="card border-left-success shadow py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <i class="bi bi-calendar3"></i> Next Payout Date</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <h2>Payout Date: <%= renderObj.estimated %></h2>
+                                                <h2> <%= renderObj.msg %></h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bi bi-currency-dollar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+            </div>
+            <div class="payout-body">
+
+                <div>
+                        
+                    </div>
+
+
+<br>
+                            <% if (renderMsg && renderMsg.length > 0) { %>
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold"><i class="bi bi-exclamation-diamond-fill"></i> Notice regarding your account</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><% renderMsg.forEach(render => { %>
+                                      <%- render.msg %>
+                                    <% }) %></p>
+                                    
+                                </div>
+                            </div>
+
+                                <div class="error-messages">
+                                    
+                                </div>
+                              <% } %>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

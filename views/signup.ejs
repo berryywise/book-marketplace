@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Book Maniac</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/stylesheets/bootstrap.min.js"></script>
+</head>
+<body class="signup-page">
+
+     <div class="container">
+
+        <!-- Outer Row -->
+        
+<div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                
+<img class="login-logo" src="/stylesheets/logo.svg">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block signup-bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
+                                    </div>
+                                    <% if (errors && errors.length > 0) { %>
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul>
+                                            <% errors.forEach(error => { %>
+                                            <li><%= error.msg %></li>
+                                            <% }) %>
+                                        </ul>
+                                    </div>
+                                    <% } %>
+                                    
+                                    <form class="login-form-page" action="/signup" method="post">
+                                        <input class="form-control" type="email" name="email" placeholder="Your Email" required>
+                                        <input class="form-control" type="text" name="username" placeholder="Your Username" required>
+                                        <input class="form-control" type="password" name="password" min="3" max="20" placeholder="Password" required>
+                                        <input class="btn login-button btn-primary btn-user btn-block" type="submit" value="Create Account">
+                                    </form>
+
+                                    <hr>
+                                   
+                                    <div class="text-center">
+                                        <a class="small" href="/login">Back to Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+       
+
+    </div>
+
+</div>
+    
+    
+</body>
+</html>
