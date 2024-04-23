@@ -50,9 +50,11 @@
                 <h1>Admin Panel</h1>
 
                 <div class="row">
+
+                    <% if (usersInReview && usersInReview.length > 0) { %>
+
                         <h2>New users in review:</h2>
-                        
-                        
+                         
                         <% usersInReview.forEach(element => { %>
                             <div class="parent col-12 col-lg-4">
     
@@ -76,38 +78,45 @@
                                     </div>
                                 </div>
                                     <% }) %>
+
+                        <% } %>
+
                 </div>
                 
                 <div class="row">
-                    <h2>New products in review:</h2>
-                    
-                    <% products.forEach(element => { %>
-                        <div class="parent col-12 col-lg-4">
 
-                                <div class="card" style="width: 18rem;">
-            
-                                    <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= element.name %></h5>
-                                        <p class="card-text"><%=element.description%></p>
-                                        <p class="card-text">Product owner: <%=element.owner_username%></p>
-                                        <p class="card-text">Account created: <%=element.user.accountcreated%></p>
-                                        <p class="card-text">Link to <a href="<%=element.file%>">PDF</a></p>
-                                        <p class="card-text">Link to <a href="<%=element.thumbnail%>">Thumbnail</a></p>
-                                        <p class="card-text card-price">$<%=element.price%></p>
-                                        <form action="/adminpanel/approveproduct" method="post">
-                                            <input type="hidden" name="elementId" value="<%= element._id %>">
-                                            <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>
-                                        </form>
-                                        <form action="/adminpanel/declineproduct" method="post">
-                                            <input type="hidden" name="elementId" value="<%= element._id %>">
-                                            <button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i>Decline</button>
-                                        </form>
+                    <% if (products && products.length > 0) { %>
+                        <h2>New products in review:</h2>
+
+                        <% products.forEach(element => { %>
+                            <div class="parent col-12 col-lg-4">
+    
+                                    <div class="card" style="width: 18rem;">
+                
+                                        <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= element.name %></h5>
+                                            <p class="card-text"><%=element.description%></p>
+                                            <p class="card-text">Product owner: <%=element.owner_username%></p>
+                                            <p class="card-text">Account created: <%=element.user.accountcreated%></p>
+                                            <p class="card-text">Link to <a href="<%=element.file%>">PDF</a></p>
+                                            <p class="card-text">Link to <a href="<%=element.thumbnail%>">Thumbnail</a></p>
+                                            <p class="card-text card-price">$<%=element.price%></p>
+                                            <form action="/adminpanel/approveproduct" method="post">
+                                                <input type="hidden" name="elementId" value="<%= element._id %>">
+                                                <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>
+                                            </form>
+                                            <form action="/adminpanel/declineproduct" method="post">
+                                                <input type="hidden" name="elementId" value="<%= element._id %>">
+                                                <button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i>Decline</button>
+                                            </form>
+                                        </div>
+                                        
                                     </div>
-                                    
                                 </div>
-                            </div>
-                                <% }) %>
+                                    <% }) %>
+                        
+                        <% } %>
 
                                </div>
                             </body>

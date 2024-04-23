@@ -4365,6 +4365,11 @@ textarea.form-control-lg {
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
+.card-img-top {
+  max-width: 200px;
+  align-self: center;
+}
+
 .card-group > .card {
   margin-bottom: 0.75rem;
 }
