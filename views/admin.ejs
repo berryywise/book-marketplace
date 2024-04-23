@@ -45,8 +45,40 @@
                 </ul>
             </div>
             <div class="dashboard-info">
+
+                <h1>Admin Panel</h1>
+
+                <div class="row">
+                        <h2>New users in review:</h2>
+                        
+                        
+                        <% usersInReview.forEach(element => { %>
+                            <div class="parent col-12 col-lg-4">
+    
+                                    <div class="card" style="width: 18rem;">
+                
+                                        <div class="card-body">
+                                            <p class="card-text">Product owner: <%=element.username%></p>
+                                            <p class="card-text">Firstname: <%=element.firstname%></p>
+                                            <p class="card-text">Lastname: <%=element.lastname%></p>
+                                            <p class="card-text">Payout option: <%=element.payout_option%></p>
+                                            <p class="card-text">Country: <%=element.country%></p>
+                                            <p class="card-text">Date of Birth: <%=element.dateofbirth%></p>
+                                            <p class="card-text">Email verified: <%=element.emailverified%></p>
+                                            <p class="card-text">Account created: <%=element.accountcreated%></p>
+                                            <form action="/adminpanel/approveuser" method="post">
+                                                <input type="hidden" name="userId" value="<%=element._id %>">
+                                                <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                    <% }) %>
+                </div>
                 
                 <div class="row">
+                    <h2>New products in review:</h2>
                     
                     <% products.forEach(element => { %>
                         <div class="parent col-12 col-lg-4">
@@ -62,11 +94,11 @@
                                         <p class="card-text">Link to <a href="<%=element.file%>">PDF</a></p>
                                         <p class="card-text">Link to <a href="<%=element.thumbnail%>">Thumbnail</a></p>
                                         <p class="card-text card-price">$<%=element.price%></p>
-                                        <form action="/adminpanel/approve" method="post">
+                                        <form action="/adminpanel/approveproduct" method="post">
                                             <input type="hidden" name="elementId" value="<%= element._id %>">
                                             <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>
                                         </form>
-                                        <form action="/adminpanel/decline" method="post">
+                                        <form action="/adminpanel/declineproduct" method="post">
                                             <input type="hidden" name="elementId" value="<%= element._id %>">
                                             <button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i>Decline</button>
                                         </form>

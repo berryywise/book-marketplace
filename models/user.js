@@ -26,7 +26,7 @@ const User = new Schema({
   accountcreated: { type: Date, default: Date.now, },
   lastlogin: Date,
   tier: { type: String, default: "starter" },
-  max_products: { type: Number, default: 1 },
+  max_products: { type: Number, default: 5 },
   verified: { type: Boolean, default: false, },
   inreview: { type: Boolean, default: true },
   emailverified: { type: Boolean, default: false },
