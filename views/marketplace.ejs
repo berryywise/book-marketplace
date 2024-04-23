@@ -30,8 +30,8 @@
                 </li>
                 <% } %>
             <hr class="sidebar-divider my-0">
-            <li class="sidebar-card"><a href="/marketplace"><i class="bi bi-shop"></i><span> Marketplace</span></a></li>
-            <li class="sidebar-card active"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
+            <li class="sidebar-card active"><a href="/marketplace"><i class="bi bi-shop"></i><span> Marketplace</span></a></li>
+            <li class="sidebar-card"><a href="/products"><i class="bi bi-list-check"></i><span> Your Products</span></a></li>
             <li class="sidebar-card"><a href="/payout"><i class="bi bi-credit-card-2-back-fill"></i><span> Payout</span></a></li>
             <li class="sidebar-card"><a href="/settings"><i class="bi bi-gear-fill"></i><span> Settings</span></a></li>
             <hr class="sidebar-divider my-0">
@@ -43,45 +43,10 @@
                 </div>
         </ul>
     </div>
-
     
-    <div class="payout-info">
+    <div class="marketplace-info">
 
-            <div><button class="btn btn-primary add-product-button"> <a href="/products/add">Add New Product</a></button></div>
             
-            <div class="row">
-
-            <% products.forEach(element => { %>
-
-                <div class="parent col-12 col-lg-4">
-                    <div class="card" style="width: 18rem;">
-
-                        <% if (element.declined) { %>
-                        <span class="badge bg-danger">Declined</span>
-                        <%} else if(element.in_review)  { %>
-                        <span class="badge badge-warning">In Review</span>
-                        <% } else  { %>
-                        <span class="badge badge-success">Approved</span>
-                        <% }  %>
-
-                        <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
-                        <div class="card-body">
-                            <h5 class="card-title"><%= element.name %></h5>
-                            <p class="card-text"><%=element.description%></p>
-                            <p class="card-text card-price">$<%=element.price%></p>
-                            <form action="/products/delete" method="post">
-                                <input type="hidden" name="elementId" value="<%= element._id %>">
-                                <button class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i>Remove</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <% }) %>
-                
-            </div>
-
 
         </div>
     </div>

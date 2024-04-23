@@ -2,6 +2,7 @@
 //TODO: add payment method with crypto to buy ebook
 //TODO: subdomein for users / book names ? optional
 //TODO: add bycrypt to passwords
+//TODO: add mailer info to .env
 
 
 require("dotenv").config();
@@ -18,7 +19,7 @@ const session = require("cookie-session");
 const flash = require("express-flash");
 const multer = require('multer');
 const path = require('path');
-const { scheduleSalesGeneration } = require("./gensales"); //-- UNCOMMENT TO START SCRIPT
+const { scheduleSalesGeneration } = require("./gensales");
 
 const settingsRouter = require("./routes/settings");
 const dashboardRouter = require("./routes/dashboard");
@@ -26,6 +27,7 @@ const payoutRouter = require("./routes/payout");
 const productsRouter = require("./routes/products");
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/adminpanel");
+const marketplaceRouter = require("./routes/marketplace");
 
 
 const app = express();
@@ -45,7 +47,6 @@ console.log("server using storage location: " + saveDirectory);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static(saveDirectory));
 
 app.use(
@@ -66,6 +67,7 @@ app.use("/settings", settingsRouter);
 app.use("/payout", payoutRouter);
 app.use("/products", productsRouter);
 app.use("/adminpanel", adminRouter)
+app.use("/marketplace", marketplaceRouter);
 
 
 app.get("/", (req, res) => {
