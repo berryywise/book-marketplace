@@ -226,10 +226,6 @@ margin-top:20px;
     background-size: cover;
 }
 
-.row {
-	width:100%;
-}
-
 .parent .card {
 	width:auto !important;
 }
@@ -455,6 +451,7 @@ color:white;
 
 .card {
 	    border-radius: 20px !important;
+		margin-bottom: 5px;
 }
 
 .dashboard-item .row div {

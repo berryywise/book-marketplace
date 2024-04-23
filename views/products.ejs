@@ -43,12 +43,15 @@
         </ul>
     </div>
 
-        <div class="payout-info">
+    
+    <div class="payout-info">
+
             <div><button class="btn btn-primary add-product-button"> <a href="/products/add">Add New Product</a></button></div>
             
+            <div class="row">
+
             <% products.forEach(element => { %>
 
-            <div class="row">
                 <div class="parent col-12 col-lg-4">
                     <div class="card" style="width: 18rem;">
 
@@ -73,16 +76,10 @@
                     </div>
                 </div>
 
+                
+                <% }) %>
+                
             </div>
-
-            <% }) %>
-
-        
-
-
-
-
-
 
 
         </div>
