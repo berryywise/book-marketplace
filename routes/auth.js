@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const passport = require("passport");
 const nodemailer = require("nodemailer");
@@ -14,12 +15,12 @@ const router = express.Router();
 const secretKey = "your-secret-key";
 
 let transporter = nodemailer.createTransport({
-  host: "smtp.mailgun.org",
+  host: process.env.MAIL_HOST,
   port: 587,
   secure: false,
   auth: {
-    user: "postmaster@mg.bookmaniac.net",
-    pass: "8e9d34e867e59d78a337da9e830c2b28-2c441066-8766d4f1",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 });
 

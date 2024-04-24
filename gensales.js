@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cron = require("node-cron");
 const User = require("./models/user");
 const Sales = require("./models/sales");
@@ -13,12 +14,12 @@ const templatePath = "./views/new_sale.ejs";
 const templateContent = fs.readFileSync(templatePath, "utf-8");
 
 let transporter = nodemailer.createTransport({
-  host: "smtp.mailgun.org",
+  host: process.env.MAIL_HOST,
   port: 587,
   secure: false,
   auth: {
-    user: "postmaster@mg.bookmaniac.net",
-    pass: "8e9d34e867e59d78a337da9e830c2b28-2c441066-8766d4f1",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL.PASS,
   },
 });
 
