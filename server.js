@@ -2,7 +2,6 @@
 //TODO: add payment method with crypto to buy ebook
 //TODO: subdomein for users / book names ? optional
 //TODO: add bycrypt to passwords
-//TODO: add mailer info to .env
 
 
 require("dotenv").config();
