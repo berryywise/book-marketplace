@@ -12,6 +12,7 @@ const Products = new Schema({
   deleted: { type: Boolean, default: false },
   in_review: { type: Boolean, default: true },
   declined: { type: Boolean, default: false },
+  favorite: {type: Boolean, default: false},
 });
 
 module.exports = mongoose.model("Products", Products);

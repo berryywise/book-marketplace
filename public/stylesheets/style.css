@@ -472,12 +472,7 @@ color:white;
 	grid-template-columns: 1fr 7fr;
 }
 
-.marketplace-container {
-
-}
-
 .marketplace-container > div {
-	border: 1px solid red;
 	padding: 30px;
 }
 
@@ -512,6 +507,7 @@ color:white;
 	display: flex;
 	justify-content: center;
 	gap: 10px;
+	margin-bottom: 20px;
 }
 
 .favorites {
