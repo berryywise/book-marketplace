@@ -31,4 +31,16 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
 })
 
+router.post("/purchase", ensureAuthenticated, async (req, res) => {
+
+    const itemId = req.body.elementId;
+    const userId = req.user._id;
+    
+    console.log(itemId)
+    console.log(userId)
+
+    res.send("Implenting as we speak! :)")
+
+})
+
 module.exports = router;
