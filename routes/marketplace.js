@@ -1,10 +1,7 @@
-//TODO: add all available books on marketplace
-//TODO: nice user interface for marketplace
-//TODO: add tags on books when uploading
 //TODO: add filter options for books - TAGS and by price
-//TODO: sponsored books at the top level
+//TODO: add tags on books when uploading
 //TODO: search bar for book titles
-//TODO: mark favorite on admin panel
+//TODO: sponsored books at the top level
 
 //---------------------------------
 
