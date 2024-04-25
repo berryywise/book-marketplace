@@ -302,7 +302,7 @@ margin-bottom:10px;
 }
 
 .payment-info .card-body {
-	    padding: 10px 10px; !important;
+	    padding: 10px 10px !important;
 }
 
 .card-blue {
@@ -465,3 +465,69 @@ color:white;
 .h5 {
 	font-size:30px;
 }
+
+.wrapper-marketplace {
+
+	display: grid;
+	grid-template-columns: 1fr 7fr;
+}
+
+.marketplace-container > div {
+	padding: 30px;
+}
+
+.marketplace-header {
+
+	display: flex;
+	justify-content: center;
+
+}
+
+.input-box {
+	font-family: inherit;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	padding: 0.75rem 1rem;
+	width: 100%;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+}
+
+.input {
+	border: none;
+	box-shadow: none;
+	background: 0 0;
+	outline: none;	
+}
+
+.tags {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.favorites {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 10px;
+	margin: 20px 0px 40px 0px;
+}
+
+#book-for-sale {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  height: 100%;
+}
+

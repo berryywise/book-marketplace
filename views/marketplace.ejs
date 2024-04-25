@@ -11,7 +11,8 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper-marketplace">
+
         <div class="sidebar-container">
         <a href="/dashboard"><img class="d-none d-lg-block" src="/stylesheets/logo.svg"></a>
         <% if (typeof user != "undefined" && user.tier) { %>
@@ -44,11 +45,87 @@
         </ul>
     </div>
     
-    <div class="marketplace-info">
-
-            
-
+    <div class="marketplace-container">
+    
+        <div class="marketplace-header">
+            <div class="input-box">
+                <i class="bi bi-search"></i>
+                <input class="input" type="text" placeholder="Search Book"></input>
+            </div>
         </div>
-    </div>
+        <div class="marketplace-body">
+            <!-- <div class="tags">
+                <div>
+                    <button class="btn btn-primary">education(12)</button>
+                    <button class="btn btn-primary">sci-fi(66)</button>
+                    <button class="btn btn-primary">action(18)</button>
+                    <button class="btn btn-primary">adventure(44)</button>
+                    <button class="btn btn-primary">fantasy(22)</button>
+                    <button class="btn btn-primary">romance(33)</button>
+                </div> -->
+            </div>
+            <% if (monthlyFavorites && monthlyFavorites.length > 0) { %>
+            <h3>Monthly favorites</h3>
+            <div class="favorites">
+
+                    <% monthlyFavorites.forEach(element => { %>
+                        <div class="parent col-12 col-lg-4">
+
+                                <div class="" id="book-for-sale" style="width: 18rem;">
+            
+                                    <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= element.name %></h5>
+                                        <p class="card-text"><%=element.description%></p>
+                                        <p class="card-text">Publisher: <%=element.owner_username%></p>
+                                        <p class="card-text card-price">$<%=element.price%></p>
+                                        <form action="/" method="post">
+                                            <input type="hidden" name="elementId" value="<%= element._id %>">
+                                            <button class="btn btn-info" type="submit">Purchase Book</button>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <% }) %>
+                    
+                    <% } else{ %>  
+                        <h3>No favorites have been picked for this month yet.</h3>
+                     <% } %>
+            </div>
+                <% if (booksForSale && booksForSale.length > 0) { %>
+                    <h3>Hot and trending books</h3>
+                    <div class="trending">
+        
+                            <% booksForSale.forEach(element => { %>
+                                <div class="parent col-12 col-lg-4">
+        
+                                        <div class="" id="book-for-sale" style="width: 18rem;">
+                    
+                                            <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%= element.name %></h5>
+                                                <p class="card-text"><%=element.description%></p>
+                                                <p class="card-text">Publisher: <%=element.owner_username%></p>
+                                                <p class="card-text card-price">$<%=element.price%></p>
+                                                <form action="/" method="post">
+                                                    <input type="hidden" name="elementId" value="<%= element._id %>">
+                                                    <button class="btn btn-info" type="submit">Purchase Book</button>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                        <% }) %>
+                            
+                            <% } else{ %>  
+                                <h3>No books for sale yet.</h3>
+                             <% } %>
+            </div>
+        </div>
+    
+</div>
+
+
 </body>
 </html>
