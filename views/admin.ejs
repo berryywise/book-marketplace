@@ -102,6 +102,12 @@
                                             <p class="card-text">Link to <a href="<%=element.file%>">PDF</a></p>
                                             <p class="card-text">Link to <a href="<%=element.thumbnail%>">Thumbnail</a></p>
                                             <p class="card-text card-price">$<%=element.price%></p>
+                                            <% if (element.favorite == false) { %>
+                                            <form action="/adminpanel/favoriteproduct" method="post">
+                                            <input type="hidden" name="elementId" value="<%= element._id %>">
+                                            <button class="btn btn-warning" type="submit"><i class="bi bi-star"></i>Favorite</button>
+                                            </form>
+                                            <% } %>
                                             <form action="/adminpanel/approveproduct" method="post">
                                                 <input type="hidden" name="elementId" value="<%= element._id %>">
                                                 <button class="btn btn-info" type="submit"><i class="bi bi-check-lg"></i>Approve</button>

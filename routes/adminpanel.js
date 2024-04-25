@@ -42,6 +42,20 @@ router.post("/declineproduct", ensureAuthenticated, ensureAdmin, async (req, res
   }
 });
 
+router.post("/favoriteproduct", ensureAuthenticated, ensureAdmin, async (req, res) => {
+  try {
+    const itemId = req.body.elementId;
+
+    await Product.findByIdAndUpdate(itemId, { $set: { favorite: true } });
+
+    res.redirect("/adminpanel");
+
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 router.post("/approveuser", ensureAuthenticated, ensureAdmin, async (req, res) => {
   try {
     const userId = req.body.userId;

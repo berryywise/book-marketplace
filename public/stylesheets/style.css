@@ -469,7 +469,7 @@ color:white;
 .wrapper-marketplace {
 
 	display: grid;
-	grid-template-columns: 1fr 7fr;
+	grid-template-columns: 14rem 7fr;
 }
 
 .marketplace-container > div {
