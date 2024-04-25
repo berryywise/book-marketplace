@@ -1,7 +1,7 @@
 //TODO: add marketplace for all users & payment script
 //TODO: add payment method with crypto to buy ebook
-//TODO: subdomein for users / book names ? optional
 //TODO: add bycrypt to passwords
+//TODO: subdomein for users / book names ? optional
 
 
 require("dotenv").config();
