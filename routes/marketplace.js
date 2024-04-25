@@ -25,7 +25,7 @@ const ensureAuthenticated = require("../middleware/auth");
 router.get("/", ensureAuthenticated, async (req, res) => {
 
     const monthlyFavorites = await Product.find({ in_review: false, deleted: false, declined: false, favorite: true}).limit(5)
-    const booksForSale = await Product.find({ in_review: false, deleted: false, declined: false})
+    const booksForSale = await Product.find({ in_review: false, deleted: false, declined: false,})
 
     res.render("marketplace", {user: req.user, monthlyFavorites, booksForSale})
 
