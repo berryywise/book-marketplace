@@ -79,7 +79,7 @@
                                         <p class="card-text"><%=element.description%></p>
                                         <p class="card-text">Publisher: <%=element.owner_username%></p>
                                         <p class="card-text card-price">$<%=element.price%></p>
-                                        <form action="/" method="post">
+                                        <form action="/marketplace/purchase" method="post">
                                             <input type="hidden" name="elementId" value="<%= element._id %>">
                                             <button class="btn btn-info" type="submit">Purchase Book</button>
                                         </form>
