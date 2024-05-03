@@ -1,4 +1,3 @@
-//TODO: fix card layout
 //TODO: add filter options for books - TAGS and by price
 //TODO: add tags on books when uploading
 //TODO: search bar for book titles
