@@ -1,9 +1,8 @@
 //TODO: add filter options for books - TAGS and by price
-//TODO: add tags on books when uploading
 //TODO: search bar for book titles
 //TODO: sponsored books at the top level
 //TODO: make discription shorter on marketplace page
-//TODO: make individual product page with long description
+//TODO: make individual product page with long description and tags
 //TODO: replace purhcase button with product page button
 //TODO: shadow on hover book card
 
@@ -28,7 +27,25 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     const monthlyFavorites = await Product.find({ in_review: false, deleted: false, declined: false, favorite: true}).limit(5)
     const booksForSale = await Product.find({ in_review: false, deleted: false, declined: false,})
 
-    res.render("marketplace", {user: req.user, monthlyFavorites, booksForSale})
+    const tag = req.query.tag;
+    let taggedProducts;
+
+    if (tag) {
+
+        taggedProducts = await Product.find({ in_review: false, deleted: false, declined: false, categories: {$in: [tag] } })
+
+    } else {
+        taggedProducts = booksForSale
+    }
+
+    const aggregate = await Product.aggregate([
+        { $unwind: "$categories" },
+        { $group: { _id: "$categories", count: { $sum: 1 } } }
+    ])
+
+    aggregate.sort((a, b) => a._id.localeCompare(b._id));
+
+    res.render("marketplace", {user: req.user, monthlyFavorites, taggedProducts, categories: aggregate})
 
 })
 

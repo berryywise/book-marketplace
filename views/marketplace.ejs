@@ -54,16 +54,15 @@
             </div>
         </div>
         <div class="marketplace-body">
-            <!-- <div class="tags">
-                <div>
-                    <button class="btn btn-primary">education(12)</button>
-                    <button class="btn btn-primary">sci-fi(66)</button>
-                    <button class="btn btn-primary">action(18)</button>
-                    <button class="btn btn-primary">adventure(44)</button>
-                    <button class="btn btn-primary">fantasy(22)</button>
-                    <button class="btn btn-primary">romance(33)</button>
-                </div> -->
-            <!-- </div> -->
+            <% if (categories && categories.length > 0) { %>
+                <div class="tags">
+                        <% categories.forEach(category => { %>
+                          <button class="btn btn-primary"><a href="/marketplace?tag=<%= category._id %>"><%= category._id %>(<%= category.count %>)</a></button>
+                        <% }) %>
+                </div>
+            <% } %>
+
+             </div>
             <% if (monthlyFavorites && monthlyFavorites.length > 0) { %>
             <h3>Monthly favorites</h3>
             <div class="favorites">
@@ -93,11 +92,11 @@
                     <% } else{ %>  
                         <h3>No favorites have been picked for this month yet.</h3>
                      <% } %>
-                <% if (booksForSale && booksForSale.length > 0) { %>
+                <% if (taggedProducts && taggedProducts.length > 0) { %>
                     <h3>Hot and trending books</h3>
                     <div class="trending">
         
-                            <% booksForSale.forEach(element => { %>
+                            <% taggedProducts.forEach(element => { %>
                                 <div class="parent col-12 col-lg-4">
         
                                         <div class="" id="book-for-sale" style="width: 18rem;">
