@@ -62,6 +62,21 @@
                     <div class="price-control"><input class="form-control" type="text" pattern="[0-9]+(\.[0-9]+)?" title="Enter a valid price (e.g., 10 or 10.99)" min="1" max="<%= adminDb.max_product_price %>" id="price" name="price" required></div>
                     <label for="description">Description</label>
                     <textarea class="form-control" type="text" minlength="3" maxlength="300" id="description" name="description" required></textarea>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxDrama" value="optionDrama">
+                    <label class="form-check-label" for="inlineCheckboxDrama">Drama</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxAdventure" value="optionAdventure">
+                    <label class="form-check-label" for="inlineCheckboxAdventure">Adventure</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxSciFi" value="optionSciFi">
+                    <label class="form-check-label" for="inlineCheckboxSciFi">Sci-Fi</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxHorror" value="optionHorror">
+                    <label class="form-check-label" for="inlineCheckboxHorror">Horror</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxFantasy" value="optionFantasy">
+                    <label class="form-check-label" for="inlineCheckboxFantasy">Fantasy</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxSelfHelp" value="optionSelfHelp">
+                    <label class="form-check-label" for="inlineCheckboxSelfHelp">Self-Help</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckboxRomance" value="optionRomance">
+                    <label class="form-check-label" for="inlineCheckboxRomance">Romance</label>
+                    <br>
                     <label for="pdfFile">Upload File:</label>
                     <input class="form-control" type="file" name="pdfFile" id="pdfFile">
                     <label for="thumbnailFile">Upload Thumbnail:</label>

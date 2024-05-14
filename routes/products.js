@@ -106,10 +106,14 @@ router.post(
       
       const MAX_PRODUCT_LIMIT = req.user.max_products;
 
+      console.log(req.body)
+      console.log(req.user)
+
       
       if (!req.files["pdfFile"] || !req.files["thumbnailFile"]) {
         return res.render("add", {
           adminDb,
+          user: req.user,
           errors: [{ msg: `Both PDF file and Thumbnail are required!` }],
         });
       }
@@ -122,6 +126,7 @@ router.post(
       if(typeof req.body.price != "number") {
         return res.render("add", {
           adminDb,
+          user: req.user,
           errors: [{ msg: `Price must be a number!` }],
         }); 
       }
@@ -142,6 +147,7 @@ router.post(
       ) {
         return res.render("add", {
           adminDb,
+          user: req.user,
           errors: [
             {
               msg: `Price can't be lower as $1 or greater then $${adminDb.max_product_price}`,
@@ -153,6 +159,7 @@ router.post(
       if (userProductsCount >= MAX_PRODUCT_LIMIT) {
         return res.render("add", {
           adminDb,
+          user: req.user,
           errors: [{ msg: `You can currently add only ${MAX_PRODUCT_LIMIT} product with your current tier.` }],
         });
       }
