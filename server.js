@@ -45,6 +45,7 @@ console.log("server using storage location: " + saveDirectory);
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static(saveDirectory));
 

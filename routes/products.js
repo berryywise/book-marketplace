@@ -106,10 +106,6 @@ router.post(
       
       const MAX_PRODUCT_LIMIT = req.user.max_products;
 
-      console.log(req.body)
-      console.log(req.user)
-
-      
       if (!req.files["pdfFile"] || !req.files["thumbnailFile"]) {
         return res.render("add", {
           adminDb,
@@ -131,6 +127,24 @@ router.post(
         }); 
       }
 
+      const checkboxNames = [
+        'Drama',
+        'Adventure',
+        'Sci-Fi',
+        'Horror',
+        'Fantasy',
+        'Self-Help',
+        'Romance'
+      ];
+
+      const checked = [];
+
+      checkboxNames.forEach(name => {
+        if (req.body[name] === name) {
+          checked.push(name)
+        }
+      })
+
       const productData = {
         name: req.body.name,
         price: req.body.price,
@@ -139,6 +153,7 @@ router.post(
         file: pdfFile.path,
         user: req.user._id,
         owner_username: req.user.username,
+        categories: checked,
       };
 
       if (
