@@ -75,7 +75,7 @@
                             <div class="parent col-12 col-lg-4">
                                     
                                 <form class="input-form" action="/marketplace/purchase" method="post">
-                                    <a class="card-link" href="/marketplace/?book=<%= element._id %>">
+                                    <a class="card-link" href="marketplace/book/<%= element._id %>">
                                     <div class="" id="book-for-sale" style="width: 18rem;">
                 
                                         <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
@@ -110,7 +110,7 @@
                                     <div class="parent col-12 col-lg-4">
             
                                         <form class="input-form" action="/marketplace/purchase" method="post">
-                                        <a class="card-link" href="/marketplace/?book=<%= element._id %>">  
+                                        <a class="card-link" href="marketplace/book/<%= element._id %>">  
                                         <div class="" id="book-for-sale" style="width: 18rem;">
                         
                                                 <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">

@@ -466,17 +466,17 @@ color:white;
 	font-size:30px;
 }
 
-.wrapper-marketplace {
+.wrapper-marketplace, .wrapper-product {
 
 	display: grid;
 	grid-template-columns: 1fr 7fr;
 }
 
-.marketplace-container > div {
+.marketplace-container > div, .product-container > div {
 	padding: 30px;
 }
 
-.marketplace-header {
+.marketplace-header, .product-header {
 
 	display: flex;
 	justify-content: center;

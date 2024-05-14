@@ -20,6 +20,8 @@ const ensureAuthenticated = require("../middleware/auth");
 const timeoutMiddleware = require("../middleware/timeout");
 
 
+
+
 router.get("/", ensureAuthenticated, async (req, res) => {
 
     //todo: add try / catch
@@ -61,18 +63,14 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
 })
 
+router.get("/book/:bookId", ensureAuthenticated, async (req, res) => {
 
-router.post("/purchase", ensureAuthenticated, async (req, res) => {
+    const bookId = req.params.bookId
 
-    const itemId = req.body.elementId;
-    const userId = req.user._id;
-    
-    console.log(itemId)
-    console.log(userId)
-
-    res.send("Implenting as we speak! :)")
+    res.render("product-page", {user: req.user})
 
 })
+
 
 const validateRequest = [
     check("searchQuery")
