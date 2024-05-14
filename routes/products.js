@@ -134,7 +134,8 @@ router.post(
         'Horror',
         'Fantasy',
         'Self-Help',
-        'Romance'
+        'Romance',
+        'Finance',
       ];
 
       const checked = [];
