@@ -7,8 +7,8 @@ body {
 
 
 .sidebar-container {
-  background-image: linear-gradient(157deg,rgb(180 9 21 / 0%) 180%,#090915 100%),url(https://bookmaniac.net/wp-content/uploads/2024/02/financial-technology-36-scaled.jpg)!important;
-    background-position: center center;
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  background-position: center center;
   padding:20px;
 }
 
@@ -186,7 +186,7 @@ margin-top:20px;
 }
 
 .login-page,.signup-page,.password-page{
-    background-image: linear-gradient(180deg,rgba(9,9,21,0) 0%,#090915 100%),url(https://bookmaniac.net/wp-content/uploads/2024/02/financial-technology-36-scaled.jpg)!important;
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     background-size: cover;
     height:100vh;
 }
@@ -215,13 +215,13 @@ margin-top:20px;
 
 
 .bg-login-image {
-    background: url(https://bookmaniac.net/wp-content/uploads/2024/02/mistake.png);
+    background: url(../images/inlog_book.webp);
     background-position: center;
     background-size: cover;
 }
 
 .signup-bg-login-image {
-	background: url(https://bookmaniac.net/wp-content/uploads/2024/02/book-title.png);
+	background: url(../images/inlog_book.webp);
     background-position: center;
     background-size: cover;
 }

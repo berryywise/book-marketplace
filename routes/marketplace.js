@@ -2,6 +2,10 @@
 //TODO: add tags on books when uploading
 //TODO: search bar for book titles
 //TODO: sponsored books at the top level
+//TODO: make discription shorter on marketplace page
+//TODO: make individual product page with long description
+//TODO: replace purhcase button with product page button
+//TODO: shadow on hover book card
 
 //---------------------------------
 
