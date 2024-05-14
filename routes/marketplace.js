@@ -1,7 +1,6 @@
-//TODO: search bar for book titles
-//TODO: make individual product page with long description and tags
-//TODO: replace purhcase button with product page button
 //TODO: shadow on hover book card
+//TODO: make individual product page with long description and tags
+//TODO: replace purchase button with product page button
 
 //---------------------------------
 

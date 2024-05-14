@@ -531,7 +531,19 @@ color:white;
   height: 100%;
 }
 
+#book-for-sale:hover {
+	box-shadow: .25rem .25rem 0rem #000000;
+}
+
 .input-form {
 	display: inline;
+}
+
+.card-link {
+	color: inherit;
+}
+
+.card-link:hover {
+	color: inherit !important;
 }
 
