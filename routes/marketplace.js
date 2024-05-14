@@ -1,5 +1,4 @@
 //TODO: search bar for book titles
-//TODO: make discription shorter on marketplace page
 //TODO: make individual product page with long description and tags
 //TODO: replace purhcase button with product page button
 //TODO: shadow on hover book card
