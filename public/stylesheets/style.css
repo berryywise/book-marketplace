@@ -531,3 +531,7 @@ color:white;
   height: 100%;
 }
 
+.input-form {
+	display: inline;
+}
+

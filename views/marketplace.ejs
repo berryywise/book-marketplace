@@ -50,7 +50,9 @@
         <div class="marketplace-header">
             <div class="input-box">
                 <i class="bi bi-search"></i>
-                <input class="input" type="text" placeholder="Search Book"></input>
+                <form class="input-form" action="/marketplace/search" method="post">
+                    <input class="input" id="searchQuery" type="text" name="searchQuery" placeholder="Search Book"></input>
+                </form>
             </div>
         </div>
         <div class="marketplace-body">
@@ -63,64 +65,73 @@
                 </div>
             <% } %>
 
-             </div>
-            <% if (monthlyFavorites && monthlyFavorites.length > 0) { %>
-            <h3>Monthly favorites</h3>
-            <div class="favorites">
-
-                    <% monthlyFavorites.forEach(element => { %>
-                        <div class="parent col-12 col-lg-4">
-
-                                <div class="" id="book-for-sale" style="width: 18rem;">
-            
-                                    <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= element.name %></h5>
-                                        <p class="card-text" id="card_description"><%=element.description%></p>
-                                        <p class="card-text">Publisher: <%=element.owner_username%></p>
-                                        <p class="card-text card-price">$<%=element.price%></p>
-                                        <form action="/marketplace/purchase" method="post">
-                                            <input type="hidden" name="elementId" value="<%= element._id %>">
-                                            <button class="btn btn-info" type="submit">Purchase Book</button>
-                                        </form>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                                <% }) %>
-                    
-                            </div>
-                    <% } else{ %>  
-                        <h3>No favorites have been picked for this month yet.</h3>
-                     <% } %>
-                <% if (taggedProducts && taggedProducts.length > 0) { %>
-                    <h3>Hot and trending books</h3>
-                    <div class="trending">
-        
-                            <% taggedProducts.forEach(element => { %>
-                                <div class="parent col-12 col-lg-4">
-        
-                                        <div class="" id="book-for-sale" style="width: 18rem;">
-                    
-                                            <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%= element.name %></h5>
-                                                <p class="card-text" id="card_description"><%=element.description%></p>
-                                                <p class="card-text">Publisher: <%=element.owner_username%></p>
-                                                <p class="card-text card-price">$<%=element.price%></p>
-                                                <form action="/marketplace/purchase" method="post">
-                                                    <input type="hidden" name="elementId" value="<%= element._id %>">
-                                                    <button class="btn btn-info" type="submit">Purchase Book</button>
-                                                </form>
-                                            </div>
-                                            
+            <% if (tagged == false) { %>
+    
+                <% if (monthlyFavorites && monthlyFavorites.length > 0) { %>
+                <h3>Monthly favorites</h3>
+                <div class="favorites">
+    
+                        <% monthlyFavorites.forEach(element => { %>
+                            <div class="parent col-12 col-lg-4">
+    
+                                    <div class="" id="book-for-sale" style="width: 18rem;">
+                
+                                        <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= element.name %></h5>
+                                            <p class="card-text" id="card_description"><%=element.description%></p>
+                                            <p class="card-text">Publisher: <%=element.owner_username%></p>
+                                            <p class="card-text card-price">$<%=element.price%></p>
+                                            <form action="/marketplace/purchase" method="post">
+                                                <input type="hidden" name="elementId" value="<%= element._id %>">
+                                                <button class="btn btn-info" type="submit">Purchase Book</button>
+                                            </form>
                                         </div>
+                                        
                                     </div>
-                                        <% }) %>
-                            
-                            <% } else{ %>  
-                                <h3>No books for sale yet.</h3>
-                             <% } %>
+                                </div>
+                                    <% }) %>
+                        
+                                </div>
+                        <% } else{ %>  
+                            <h3>No favorites have been picked for this month yet.</h3>
+                         <% } %>
+                        
+                <% } %>
+
+
+                    <% if (taggedProducts && taggedProducts.length > 0) { %>
+                        <% if (tagged == false) { %> <h3>Hot and trending books</h3> <% } 
+                        else { %>  
+                            <h3>Filtered Books</h3>
+                         <% } %>
+                        <div class="trending">
+            
+                                <% taggedProducts.forEach(element => { %>
+                                    <div class="parent col-12 col-lg-4">
+            
+                                            <div class="" id="book-for-sale" style="width: 18rem;">
+                        
+                                                <img class="card-img-top" src="<%= element.thumbnail %>" alt="<%= element.name %>">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%= element.name %></h5>
+                                                    <p class="card-text" id="card_description"><%=element.description%></p>
+                                                    <p class="card-text">Publisher: <%=element.owner_username%></p>
+                                                    <p class="card-text card-price">$<%=element.price%></p>
+                                                    <form action="/marketplace/purchase" method="post">
+                                                        <input type="hidden" name="elementId" value="<%= element._id %>">
+                                                        <button class="btn btn-info" type="submit">Purchase Book</button>
+                                                    </form>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                            <% }) %>
+                                
+                                <% } else{ %>  
+                                    <h3>No books for sale yet.</h3>
+                                 <% } %>
+
             </div>
         </div>
     
@@ -129,4 +140,5 @@
 
 </body>
 <script src="js/shortentext.js"></script>
+<script src="js/searchbar.js"></script>
 </html>
