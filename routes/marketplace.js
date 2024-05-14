@@ -1,6 +1,4 @@
-//TODO: add filter options for books - TAGS and by price
 //TODO: search bar for book titles
-//TODO: sponsored books at the top level
 //TODO: make discription shorter on marketplace page
 //TODO: make individual product page with long description and tags
 //TODO: replace purhcase button with product page button
