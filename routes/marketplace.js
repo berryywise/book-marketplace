@@ -66,8 +66,9 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 router.get("/book/:bookId", ensureAuthenticated, async (req, res) => {
 
     const bookId = req.params.bookId
+    const filteredBook = await Product.findOne({_id: bookId, in_review: false, deleted: false, declined: false,})
 
-    res.render("product-page", {user: req.user})
+    res.render("product-page", {user: req.user, filteredBook})
 
 })
 
