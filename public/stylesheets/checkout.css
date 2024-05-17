@@ -117,10 +117,7 @@ input:focus::-webkit-input-placeholder
 a{
     color: black;
 }
-a:hover{
-    color: black;
-    text-decoration: none;
-}
+
 input[type=checkbox]{
     width: unset;
     margin-bottom: unset;
@@ -133,4 +130,9 @@ input[type=checkbox]{
 } 
 #cvv:hover{
 
+}
+
+#card-header {
+    display: flex;
+    flex-direction: column-reverse;
 }
