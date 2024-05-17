@@ -508,6 +508,7 @@ color:white;
 	justify-content: center;
 	gap: 10px;
 	margin-bottom: 20px;
+	flex-wrap: wrap;
 }
 
 .favorites, .trending {
