@@ -547,3 +547,15 @@ color:white;
 	color: inherit !important;
 }
 
+.product-body {
+	display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-image {
+	width: 500px;
+	align-self: center;
+	padding: 3rem;
+}
+
