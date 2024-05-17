@@ -65,7 +65,7 @@
 
             <div>
                 <p class="card-text"><%=filteredBook.description%></p>
-                <button class="btn btn-info" type="submit">Buy Now</button>
+                    <a href="/marketplace/checkout/<%= filteredBook._id %>"><button class="btn btn-info" type="submit">Buy Now</button></a>
                 <p>Categories: <% filteredBook.categories.forEach(category => { %>
                     <%-category %>, 
                    <% }) %>
