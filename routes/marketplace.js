@@ -1,9 +1,3 @@
-//TODO: shadow on hover book card
-//TODO: make individual product page with long description and tags
-//TODO: replace purchase button with product page button
-
-//---------------------------------
-
 //TODO: implement payment system with crypto
 //TODO: book link download-able after paying
 

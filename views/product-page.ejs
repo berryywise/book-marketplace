@@ -66,7 +66,10 @@
             <div>
                 <p class="card-text"><%=filteredBook.description%></p>
                 <button class="btn btn-info" type="submit">Buy Now</button>
-                <p>Categories: Adventure - Horror - Drama</p>
+                <p>Categories: <% filteredBook.categories.forEach(category => { %>
+                    <%-category %>, 
+                   <% }) %>
+                </p>
             </div>
 
             <div>
