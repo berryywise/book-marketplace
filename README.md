@@ -12,13 +12,13 @@ Key features:
 
 User authentication and authorization. Register - Login - Caching.
 
-Full email system. Email verification, password recovery, all the way to a new sale announcement.
+Full email system. Email verification, password recovery, new sale announcements, etc.
 
-Live marketplace with crypto payment system integrated. (stripe soon to come).
+Live marketplace.
 
 Admin panel to approve new users & approve newly uploaded books.
 
-User account management - from name, address to crypto wallet and account verification status.
+User settings management - Name, address to crypto wallet / IBAN and account verification status.
 
 Different subscription tiers - to have your e-book stand out in the marketplace crowd.
 
