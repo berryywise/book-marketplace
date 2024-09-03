@@ -6,14 +6,16 @@ const ensureAuthenticated = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const timeoutMiddleware = require("../middleware/timeout");
 const multerMiddleware = require("../middleware/multer");
-const path = require('path');
+const path = require("path");
 const fs = require("fs");
 
 const saveDirectory = getSaveDirectory();
 
 function getSaveDirectory() {
   const railwayVolumeMountPath = process.env.RAILWAY_VOLUME_MOUNT_PATH;
-  return (railwayVolumeMountPath) ? railwayVolumeMountPath : path.join(__dirname, "..", "uploads");
+  return railwayVolumeMountPath
+    ? railwayVolumeMountPath
+    : path.join(__dirname, "..", "uploads");
 }
 
 const validateProductRequest = [
@@ -35,7 +37,6 @@ const validateProductRequest = [
 ];
 
 router.get("/", ensureAuthenticated, async (req, res) => {
-  
   const products = await Product.find({ user: req.user, deleted: false });
 
   await updateAdminDb();
@@ -55,11 +56,8 @@ router.get("/add", ensureAuthenticated, async (req, res) => {
 });
 
 router.post("/delete", ensureAuthenticated, async (req, res) => {
-
   try {
-
     const itemId = req.body.elementId;
-
 
     await Product.findByIdAndUpdate(
       itemId,
@@ -70,12 +68,9 @@ router.post("/delete", ensureAuthenticated, async (req, res) => {
     await updateAdminDb();
 
     res.redirect("/products");
-    
   } catch (error) {
-
     console.error("An error occurred:", error);
     res.status(500).send("Internal Server Error");
-
   }
 });
 
@@ -86,24 +81,22 @@ router.post(
   ensureAuthenticated,
   timeoutMiddleware,
   async (req, res) => {
-    
     try {
       const adminDb = await Admin.findOne({});
-      
+
       const errors = validationResult(req);
-      
+
       if (!errors.isEmpty()) {
         return res
-        .status(400)
-        .render("add", { adminDb, errors: errors.array() });
+          .status(400)
+          .render("add", { adminDb, errors: errors.array() });
       }
-      
+
       const userProductsCount = await Product.countDocuments({
         user: req.user._id,
         deleted: false,
       });
-      
-      
+
       const MAX_PRODUCT_LIMIT = req.user.max_products;
 
       if (!req.files["pdfFile"] || !req.files["thumbnailFile"]) {
@@ -113,38 +106,38 @@ router.post(
           errors: [{ msg: `Both PDF file and Thumbnail are required!` }],
         });
       }
-      
+
       const thumbnailFile = req.files["thumbnailFile"][0];
       const pdfFile = req.files["pdfFile"][0];
 
-        req.body.price = parseFloat(req.body.price)
+      req.body.price = parseFloat(req.body.price);
 
-      if(typeof req.body.price != "number") {
+      if (typeof req.body.price != "number") {
         return res.render("add", {
           adminDb,
           user: req.user,
           errors: [{ msg: `Price must be a number!` }],
-        }); 
+        });
       }
 
       const checkboxNames = [
-        'Drama',
-        'Adventure',
-        'Sci-Fi',
-        'Horror',
-        'Fantasy',
-        'Self-Help',
-        'Romance',
-        'Finance',
+        "Drama",
+        "Adventure",
+        "Sci-Fi",
+        "Horror",
+        "Fantasy",
+        "Self-Help",
+        "Romance",
+        "Finance",
       ];
 
       const checked = [];
 
-      checkboxNames.forEach(name => {
+      checkboxNames.forEach((name) => {
         if (req.body[name] === name) {
-          checked.push(name)
+          checked.push(name);
         }
-      })
+      });
 
       const productData = {
         name: req.body.name,
@@ -176,7 +169,11 @@ router.post(
         return res.render("add", {
           adminDb,
           user: req.user,
-          errors: [{ msg: `You can currently add only ${MAX_PRODUCT_LIMIT} product with your current tier.` }],
+          errors: [
+            {
+              msg: `You can currently add only ${MAX_PRODUCT_LIMIT} product with your current tier.`,
+            },
+          ],
         });
       }
 

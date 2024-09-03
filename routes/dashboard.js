@@ -13,7 +13,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
     const recentSales = await Sales.find({ owner: req.user })
       .populate("product")
-      .sort({"createdAt": -1})
+      .sort({ createdAt: -1 })
       .skip(skip)
       .limit(PAGE_ORDERS);
 

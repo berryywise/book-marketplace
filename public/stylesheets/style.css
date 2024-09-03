@@ -1,521 +1,512 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansita+Swashed:wght@700&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansita+Swashed:wght@700&family=VT323&display=swap");
 
 body {
-	background:#f7f8fb;
-	font-family: "Montserrat" !important;
-}
-
-
-.sidebar-container {
-  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-  background-position: center center;
-  padding:20px;
+  background: #f7f8fb;
+  font-family: "Montserrat" !important;
 }
 
 .payout-body i {
-    font-size: 15px;
-    border: 2px solid black;
-    border-radius: 100px;
-    padding: 3px 5px;
+  font-size: 15px;
+  border: 2px solid black;
+  border-radius: 100px;
+  padding: 3px 5px;
 }
 
 .payout-body {
-	text-align:center;
+  text-align: center;
 }
 
- ul {
-	    list-style-type: none;
-    padding: 0;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .icon-card {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .card-price-ben {
-	float:right;
+  float: right;
 }
 
 .margin-center-d {
-	margin:0 auto !important;
-	display:table;
+  margin: 0 auto !important;
+  display: table;
 }
 
-
 #paymentMethodSelect {
-	appearance: auto !important;
+  appearance: auto !important;
 }
 
 .sidebar-container {
-background-size:cover;
+  background-size: cover;
 }
 
 .alert-danger ul {
-margin-bottom:0;
+  margin-bottom: 0;
 }
 
 .dashboard-info {
-	margin-top:20px;
+  margin-top: 20px;
 }
 
 .dashboard-info .btn-primary {
-margin-top:10px;
+  margin-top: 10px;
 }
 
 .sidebar-container ul li a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .sidebar-container ul li {
-	margin-top:20px;
+  margin-top: 20px;
 }
 
-
-
-h1,h2 {
-	font-weight:400;
+h1,
+h2 {
+  font-weight: 400;
 }
 
 .sub-title {
-	margin-top:30px;
+  margin-top: 30px;
 }
 
 a {
-	text-decoration: none;
-	    color: #322be1;
+  text-decoration: none;
+  color: #322be1;
 }
 
 .dashboard-header .alert-secondary {
-	background-color: #322be1 !important;
-    color: white;
-    font-weight: bold;
-    border: none;
-    margin-top:10px;
+  background-color: #322be1 !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  margin-top: 10px;
 }
 
-.btn-danger{
-	width:100%;
+.btn-danger {
+  width: 100%;
 }
 
 .badge-warning {
-	color: #212529;
-    background-color: #ffc107;
+  color: #212529;
+  background-color: #ffc107;
 }
 
 .badge-success {
-	color: #fff;
-    background-color: #28a745;
+  color: #fff;
+  background-color: #28a745;
 }
 
-
 .sidebar-container {
-	    width: 14rem!important;
-	     min-height: 100vh;
-	     display:flex;
-	         flex-direction: column;
-    margin-bottom: 0;
-    list-style: none;
-        overflow-anchor: none;
+  background-image: linear-gradient(157deg,rgb(180 9 21 / 0%) 180%,#090915 100%), url(../images/gradient.jpg) !important;;
+  background-position: center center;
+  padding: 20px;	
+  width: 14rem !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  list-style: none;
+  overflow-anchor: none;
 }
 
 .sidebar-container img {
-	margin: 0 auto;
-	display:table;
+  margin: 0 auto;
+  display: table;
 }
-
 
 .dashboard-info {
-	display:flex;
-	    flex-direction: column;
-	    padding:20px;
-	    width:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
 }
 
-.bi-bank, .bi-currency-dollar {
-	    font-size: 30px;
-    color: #ffffff;
-    background-color: #322be1;
-    border-radius: 30px;
-    padding: 5px 13px;
+.bi-bank,
+.bi-currency-dollar {
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #322be1;
+  border-radius: 30px;
+  padding: 5px 13px;
 }
 
 .bi-currency-dollar {
-	background-color: #333333;
+  background-color: #333333;
 }
 
-
-
 .bi-bank {
-	    position: absolute;
-    top: -30px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 70px;
+  position: absolute;
+  top: -30px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 70px;
 }
 
 .col-auto {
-	margin-right:0;
+  margin-right: 0;
 }
 
 .payout-body p {
-	margin:0;
+  margin: 0;
 }
-
-
 
 .login-logo {
-	max-width:250px;
-	margin:0 auto;
-	display:table;
+  max-width: 250px;
+  margin: 0 auto;
+  display: table;
 }
 
-.signup-page .my-5,.login-logo {
-	margin-top:60px !important;
+.signup-page .my-5,
+.login-logo {
+  margin-top: 60px !important;
 }
 
 .password-page .btn {
-width:100%;
-margin-top:20px;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .password-page label {
-	font-weight:bold;
+  font-weight: bold;
 }
 
-.login-page,.signup-page,.password-page{
-    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-    background-size: cover;
-    height:100vh;
+.login-page,
+.signup-page,
+.password-page {
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  background-size: cover;
+  height: 100vh;
 }
 
-.payout-info,.settings-page,.edit-settings {
-	padding:20px 0 0 20px;
-	width:100%;
+.payout-info,
+.settings-page,
+.edit-settings {
+  padding: 20px 0 0 20px;
+  width: 100%;
 }
 
 .payout-info .parent {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .tier {
-	    background-color: rgb(192 132 252 / 0.3);
-    border: 1px solid rgb(192 132 252 / 0.3);
-    color: rgb(192 132 252);
-    text-align: center;
-    border-radius: 100px;
-    font-size: 12px;
-    margin: 0;
-    text-transform: capitalize;
-    margin-top: 5px;
+  background-color: rgb(192 132 252 / 0.3);
+  border: 1px solid rgb(192 132 252 / 0.3);
+  color: rgb(192 132 252);
+  text-align: center;
+  border-radius: 100px;
+  font-size: 12px;
+  margin: 0;
+  text-transform: capitalize;
+  margin-top: 5px;
 }
 
-
-
 .bg-login-image {
-    background: url(../images/inlog_book.webp);
-    background-position: center;
-    background-size: cover;
+  background: url(../images/inlog_book.webp);
+  background-position: center;
+  background-size: cover;
 }
 
 .signup-bg-login-image {
-	background: url(../images/inlog_book.webp);
-    background-position: center;
-    background-size: cover;
+  background: url(../images/inlog_book.webp);
+  background-position: center;
+  background-size: cover;
 }
 
 .parent .card {
-	width:auto !important;
+  width: auto !important;
 }
 
 .card-price {
-	    border: 1px solid rgb(34 197 94 / 0.2);
-    color: white;
-    text-align: center;
-    background-color: #28a745;
-    border-radius: 4px;
-    margin-bottom: 14px;
-    margin-top: -5px;
-    font-size: 14px;
-    width: 50px;
+  border: 1px solid rgb(34 197 94 / 0.2);
+  color: white;
+  text-align: center;
+  background-color: #28a745;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  margin-top: -5px;
+  font-size: 14px;
+  width: 50px;
 }
 
 .login-form-page input {
-margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .btn-primary {
-	background-color: #322be1;
-    color: white;
-    padding: 10px 20px!important;
-    border-radius: 15px;
-    margin-bottom: 10px;
-    border:none;
+  background-color: #322be1;
+  color: white;
+  padding: 10px 20px !important;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  border: none;
 }
 
 .btn-info {
-	background-color: #28a745;
-	color: white;
-	width: 100%;
-	margin: 10px 0px;
+  background-color: #28a745;
+  color: white;
+  width: 100%;
+  margin: 10px 0px;
 }
 
 .login-button {
-	margin-top:10px;
-	width:100%;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .btn-primary a {
-	color:white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .price-control .form-control {
-	    padding-left: 38px;
+  padding-left: 38px;
 }
 
 .settings-info .price-control::before {
-    content: "$";
-    text-align: center;
-    width: 30px;
-    height: 36px;
-    margin-top: 1px;
-    margin-left: 1px;
-    background: #e9ecef;
-    display: block;
-    position: absolute;
-    line-height: 2.19;
-    font-weight: bold;
-    color: #747474;
-    border-radius: 4px 0 0 4px;	
+  content: "$";
+  text-align: center;
+  width: 30px;
+  height: 36px;
+  margin-top: 1px;
+  margin-left: 1px;
+  background: #e9ecef;
+  display: block;
+  position: absolute;
+  line-height: 2.19;
+  font-weight: bold;
+  color: #747474;
+  border-radius: 4px 0 0 4px;
 }
 
 .product-info {
-	padding:20px;
-	width:100%;
+  padding: 20px;
+  width: 100%;
 }
 
 .dashboard-info .payment-info {
-	z-index:10;
+  z-index: 10;
 }
 
 .payment-info .card-body {
-	    padding: 10px 10px !important;
+  padding: 10px 10px !important;
 }
 
 .card-blue {
-	text-align: center;
-    margin-top: 30px;
-    margin-left: -1px;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: -1px;
 }
 
-	
-
 .font-weight-bold {
-font-weight:bold;
+  font-weight: bold;
 }
 
 .border-left-success {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .wrapper {
-	display:flex;
+  display: flex;
 }
 
 .subscription-card .card {
-	border-radius:15px;
-	padding:20px;
-	margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .premium-info .buy-button {
-width:100%;
+  width: 100%;
 }
 
 hr.sidebar-divider {
-    border-top: 1px solid white;
-    margin-top:20px !important;
+  border-top: 1px solid white;
+  margin-top: 20px !important;
 }
 
 .sidebar-container .sidebar-card {
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: .875rem;
-    border-radius: 0.35rem;
-    color: rgba(255,255,255,.8);
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background-color: rgba(0,0,0,.1) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.875rem;
+  border-radius: 0.35rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .sidebar-card-illustration {
-    height: 3rem;
-    display: block;
+  height: 3rem;
+  display: block;
 }
 
 .sidebar-container ul li a {
-color:rgba(255,255,255,.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .sidebar-container ul .active a {
-color:white;
+  color: white;
 }
 
-.sidebar-container .active, .btn-success {
-   background-color: #322be1 !important;
-    color: white;
-    font-weight: bold;
-    border:none;
+.sidebar-container .active,
+.btn-success {
+  background-color: #322be1 !important;
+  color: white;
+  font-weight: bold;
+  border: none;
 }
 
 .btn-success {
-	font-size:13px;
+  font-size: 13px;
 }
 
 .text-primary {
-	color:#322be1 !important;
+  color: #322be1 !important;
 }
 
 .sales-tab {
-	margin-top:20px;
+  margin-top: 20px;
 }
 
 .badge {
-	    display: inline-block;
-    padding: 0.35em 0.65em;
-    font-size: 0.75em;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
-    position: absolute;
-    right: 0;
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  position: absolute;
+  right: 0;
 }
-
 
 .payout-header .border-left-success h2 {
-	font-size:16px;
+  font-size: 16px;
 }
 
-@media screen and (max-width:1100px) {
-	.sidebar-card span {
-		display:none;
-	}
+@media screen and (max-width: 1100px) {
+  .sidebar-card span {
+    display: none;
+  }
 
-.margin-fix {
-	width:103%;
-}
-	.tier {
-	display:none;
-	}
-	.card-price-ben {
-	float:none;
-}
+  .margin-fix {
+    width: 103%;
+  }
+  .tier {
+    display: none;
+  }
+  .card-price-ben {
+    float: none;
+  }
 
+  .sidebar-container {
+    width: 5rem !important;
+    padding: 8px;
+  }
+  .payout-info,
+  .settings-page,
+  .edit-settings {
+    padding: 8px;
+  }
+  .text-uppercase {
+    font-size: 12px;
+  }
+  .card-body {
+    padding: 10px;
+  }
 
-
-	.sidebar-container {
-		width: 5rem !important;
-		padding:8px;
-	}
-	.payout-info, .settings-page, .edit-settings {
-		padding:8px;
-	}
-	.text-uppercase {
-		font-size:12px;
-	}
-	.card-body {
-		padding: 10px
-	}
-	
-	.alert {
-		font-size:12px;
-    	padding: 10px;
-	}
+  .alert {
+    font-size: 12px;
+    padding: 10px;
+  }
 }
 
 .border-left-primary .card-body {
-	padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 .border-left-primary h2 {
-	font-weight:bold;
+  font-weight: bold;
 }
 
 .card {
-	    border-radius: 20px !important;
-		margin-bottom: 5px;
+  border-radius: 20px !important;
+  margin-bottom: 5px;
 }
 
 .dashboard-item .row div {
-	text-align:center;
+  text-align: center;
 }
 
 .dashboard-item .text-success {
-	color: #333333 !important;
+  color: #333333 !important;
 }
 
 .h5 {
-	font-size:30px;
+  font-size: 30px;
 }
 
-.wrapper-marketplace, .wrapper-product {
-
-	display: grid;
-	grid-template-columns: 1fr 7fr;
+.wrapper-marketplace,
+.wrapper-product {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
 }
 
-.marketplace-container > div, .product-container > div {
-	padding: 30px;
+.marketplace-container > div,
+.product-container > div {
+  padding: 30px;
 }
 
-.marketplace-header, .product-header {
-
-	display: flex;
-	justify-content: center;
-
+.marketplace-header,
+.product-header {
+  display: flex;
+  justify-content: center;
 }
 
 .input-box {
-	font-family: inherit;
-	border: 1px solid #ced4da;
-	border-radius: 0.25rem;
-	padding: 0.75rem 1rem;
-	width: 100%;
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.5;
-	color: #212529;
-	background-color: #fff;
+  font-family: inherit;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
 }
 
 .input {
-	border: none;
-	box-shadow: none;
-	background: 0 0;
-	outline: none;	
+  border: none;
+  box-shadow: none;
+  background: 0 0;
+  outline: none;
 }
 
 .tags {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	margin-bottom: 20px;
-	flex-wrap: wrapg;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrapg;
 }
 
-.favorites, .trending {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	gap: 10px;
-	margin: 20px 0px 40px 0px;
+.favorites,
+.trending {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  margin: 20px 0px 40px 0px;
 }
 
 #book-for-sale {
@@ -533,30 +524,29 @@ color:white;
 }
 
 #book-for-sale:hover {
-	box-shadow: .25rem .25rem 0rem #000000;
+  box-shadow: 0.25rem 0.25rem 0rem #000000;
 }
 
 .input-form {
-	display: inline;
+  display: inline;
 }
 
 .card-link {
-	color: inherit;
+  color: inherit;
 }
 
 .card-link:hover {
-	color: inherit !important;
+  color: inherit !important;
 }
 
 .product-body {
-	display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .product-image {
-	width: 500px;
-	align-self: center;
-	padding: 3rem;
+  width: 500px;
+  align-self: center;
+  padding: 3rem;
 }
-
