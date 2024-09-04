@@ -220,6 +220,8 @@ a {
 
 .parent .card {
   width: auto !important;
+  height: 100%;
+  justify-content: space-between;
 }
 
 .card-price {
