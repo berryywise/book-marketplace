@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 
 
 const passport = require("passport");
+const passportConfig = require("./passport");
 const session = require("cookie-session");
 const flash = require("express-flash");
 const path = require('path');
