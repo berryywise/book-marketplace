@@ -1,6 +1,4 @@
-const express = require("express");
 const router = require("express").Router();
-const Admin = require("../models/admin");
 const Product = require("../models/products");
 const User = require("../models/user");
 const ensureAuthenticated = require("../middleware/auth");

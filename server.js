@@ -10,14 +10,10 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 
 
-const User = require("./models/user");
 const passport = require("passport");
-const passportConfig = require("./passport");
 const session = require("cookie-session");
 const flash = require("express-flash");
-const multer = require('multer');
 const path = require('path');
-const { scheduleSalesGeneration } = require("./gensales");
 
 const settingsRouter = require("./routes/settings");
 const dashboardRouter = require("./routes/dashboard");
@@ -73,7 +69,7 @@ app.get("/", (req, res) => {
   res.render("login");
 });
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).render("404");
 });
 

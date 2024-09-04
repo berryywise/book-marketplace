@@ -64,7 +64,10 @@ const scheduleSalesGeneration = async () => {
   const adminDb = await Admin.findOne({});
 
   try {
-    const confirmedUsers = await User.find({ verified: true, tier: "enterprise"  });
+    const confirmedUsers = await User.find({
+      verified: true,
+      tier: "enterprise",
+    });
 
     await Promise.all(
       confirmedUsers.map(async (user) => {
@@ -145,7 +148,7 @@ const sendMail = async (randomSale) => {
     html: renderedTemplate,
   };
 
-  await transporter.sendMail(mailOptions, (error, info) => {
+  await transporter.sendMail(mailOptions, (error) => {
     console.log(error);
   });
 };

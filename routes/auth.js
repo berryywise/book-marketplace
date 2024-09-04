@@ -136,7 +136,7 @@ router.post(
 
       const mailOptions = await sendVerification(req.body, emailtoken);
 
-      await transporter.sendMail(mailOptions, (error, info) => {
+      await transporter.sendMail(mailOptions, (error) => {
         console.log(error);
         res.render("login", {
           success:
@@ -177,7 +177,7 @@ const resendVerification = async (body) => {
 
   const mailOptions = await sendVerification(body, emailtoken);
 
-  await transporter.sendMail(mailOptions, (error, info) => {
+  await transporter.sendMail(mailOptions, (error) => {
     console.log(error);
   });
 };
@@ -261,7 +261,7 @@ router.post(
         html: renderedTemplate,
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
+      transporter.sendMail(mailOptions, (error) => {
         if (error) {
           return res.send("Error sending email");
         }

@@ -6,17 +6,6 @@ const ensureAuthenticated = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const timeoutMiddleware = require("../middleware/timeout");
 const multerMiddleware = require("../middleware/multer");
-const path = require("path");
-const fs = require("fs");
-
-const saveDirectory = getSaveDirectory();
-
-function getSaveDirectory() {
-  const railwayVolumeMountPath = process.env.RAILWAY_VOLUME_MOUNT_PATH;
-  return railwayVolumeMountPath
-    ? railwayVolumeMountPath
-    : path.join(__dirname, "..", "uploads");
-}
 
 const validateProductRequest = [
   check("name")

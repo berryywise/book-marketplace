@@ -143,11 +143,11 @@ router.post(
         }
       });
 
-      const updatedUser = await User.findByIdAndUpdate(userId, updateObject, {
+      await User.findByIdAndUpdate(userId, updateObject, {
         new: true,
       });
       res.redirect("/settings");
-    } catch (error) {
+    } catch {
       res.redirect("/settings");
     }
   }

@@ -8,7 +8,6 @@ const Product = require("../models/products");
 
 const { check, validationResult } = require("express-validator");
 const ensureAuthenticated = require("../middleware/auth");
-const timeoutMiddleware = require("../middleware/timeout");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   //todo: add try / catch
