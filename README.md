@@ -32,6 +32,7 @@ Use login 'admin' and password 'admin', or create your own account and achieve t
 ![Screenshot 2024-09-03 212932](https://github.com/user-attachments/assets/ff5ba26c-34eb-4990-8d39-280a8a069f25)
 ![Screenshot 2024-09-03 212720](https://github.com/user-attachments/assets/1ffb815c-64ff-4dd2-9f91-21d38d38b1e7)
 ![Screenshot 2024-09-03 212710](https://github.com/user-attachments/assets/c95e1462-1662-47f4-88a6-c4abcdc964e1)
+![Screenshot_2](https://github.com/user-attachments/assets/cbd590ea-b833-452b-8073-e3e8c23ef897)
 
 
 Dependecies used:
