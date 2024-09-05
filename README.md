@@ -10,7 +10,7 @@ Key features:
 
 User authentication and authorization. Register - Login - Caching.
 
-Full email system. Email verification, password recovery, all the way to a new sale announcement. --> Currently inactive due to subscription plan.
+Full email system. Email verification, password recovery, all the way to a new sale announcement.
 
 Live marketplace.
 
