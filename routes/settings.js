@@ -6,75 +6,70 @@ const { check, validationResult } = require("express-validator");
 const timeoutMiddleware = require("../middleware/timeout");
 const adminLogger = require("../middleware/adminLogger");
 
-
 const validateSettingsRequest = [
   check("firstname")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 15 })
     .withMessage("Firstname must be between 1 and 15 characters long."),
   check("lastname")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 15 })
     .withMessage("Lastname must be between 1 and 15 characters long."),
   check("iban")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 15, max: 35 })
     .withMessage("Iban must be between 15 and 35 characters long."),
   check("btc")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 30, max: 64 })
     .withMessage("BTC must be between 30 and 64 characters long."),
   check("eth")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 40, max: 44 })
     .withMessage("ETH must be between 40 and 44 characters long."),
   check("ltc")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 25, max: 36 })
     .withMessage("LTC must be between 25 and 36 characters long."),
-    check("paypal")
-    .optional({values: "falsy"})
-    .trim()
-    .escape()
-    .isEmail(),  
+  check("paypal").optional({ values: "falsy" }).trim().escape().isEmail(),
   check("city")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 15 })
     .withMessage("City must be between 1 and 15 characters long."),
   check("address")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 40 })
     .withMessage("Address must be between 1 and 40 characters long."),
   check("country")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 40 })
     .withMessage("Country must be between 1 and 40 characters long."),
   check("postalcode")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 10 })
     .withMessage("Postal code must be between 1 and 10 characters long."),
   check("phonenumber")
-    .optional({values: "falsy"})
+    .optional({ values: "falsy" })
     .trim()
     .escape()
     .isLength({ min: 1, max: 17 })
@@ -82,18 +77,21 @@ const validateSettingsRequest = [
 ];
 
 router.get("/", ensureAuthenticated, async (req, res) => {
+  let payoutOption = "";
+  let payoutValue = "";
 
-  let payoutOption = '';
-  let payoutValue = '';
+  if (req.user.payout_option === "iban")
+    (payoutOption = "IBAN"), (payoutValue = req.user.iban);
+  if (req.user.payout_option === "btc")
+    (payoutOption = "Bitcoin (BTC)"), (payoutValue = req.user.btc_wallet);
+  if (req.user.payout_option === "eth")
+    (payoutOption = "Ethereum (ETH)"), (payoutValue = req.user.eth_wallet);
+  if (req.user.payout_option === "ltc")
+    (payoutOption = "Litecoin (LTC)"), (payoutValue = req.user.ltc_wallet);
+  if (req.user.payout_option === "paypal")
+    (payoutOption = "PayPal"), (payoutValue = req.user.paypal_wallet);
 
-  if(req.user.payout_option === "iban") payoutOption = "IBAN", payoutValue = req.user.iban;
-  if(req.user.payout_option === "btc") payoutOption = "Bitcoin (BTC)", payoutValue = req.user.btc_wallet;
-  if(req.user.payout_option === "eth") payoutOption = "Ethereum (ETH)", payoutValue = req.user.eth_wallet;
-  if(req.user.payout_option === "ltc") payoutOption = "Litecoin (LTC)", payoutValue = req.user.ltc_wallet;
-  if(req.user.payout_option === "paypal") payoutOption = "PayPal", payoutValue = req.user.paypal_wallet;
-
-
-  if(payoutValue === "") payoutValue = "No active payment method selected"
+  if (payoutValue === "") payoutValue = "No active payment method selected";
 
   res.render("settings", { user: req.user, payoutOption, payoutValue });
 });
@@ -119,14 +117,14 @@ router.post(
     }
 
     try {
-
       const userId = req.user._id;
 
       const updateObject = {};
 
       if (req.body.firstname) updateObject.firstname = req.body.firstname;
       if (req.body.lastname) updateObject.lastname = req.body.lastname;
-      if (req.body.payoutoption) updateObject.payout_option = req.body.payoutoption;
+      if (req.body.payoutoption)
+        updateObject.payout_option = req.body.payoutoption;
       if (req.body.iban) updateObject.iban = req.body.iban;
       if (req.body.btc) updateObject.btc_wallet = req.body.btc;
       if (req.body.eth) updateObject.eth_wallet = req.body.eth;
@@ -145,11 +143,11 @@ router.post(
         }
       });
 
-      const updatedUser = await User.findByIdAndUpdate(userId, updateObject, {
+      await User.findByIdAndUpdate(userId, updateObject, {
         new: true,
       });
       res.redirect("/settings");
-    } catch (error) {
+    } catch {
       res.redirect("/settings");
     }
   }

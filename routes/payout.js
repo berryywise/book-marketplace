@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
 const Admin = require("../models/admin");
 const ensureAuthenticated = require("../middleware/auth");
 
@@ -31,9 +30,11 @@ const calculatePayout = (user) => {
       return { formattedDate: "In review", payoutDateExpired: false };
     } else {
       const reviewEndDate = user.accountcreated;
-      const userestimatedpayoutdays = user.estimatedpayout
+      const userestimatedpayoutdays = user.estimatedpayout;
       const estimatedPayoutDate = new Date(reviewEndDate);
-      estimatedPayoutDate.setDate(reviewEndDate.getDate() + 14 + userestimatedpayoutdays); // 14 days review + 30 days
+      estimatedPayoutDate.setDate(
+        reviewEndDate.getDate() + 14 + userestimatedpayoutdays
+      ); // 14 days review + 30 days
 
       const formattedDate = estimatedPayoutDate.toLocaleDateString("en-US", {
         year: "numeric",
@@ -63,7 +64,8 @@ const updatePayout = async (user) => {
     };
 
     if (user.currentbalance < 10) {
-      renderObj.msg = "Reach a balance of at least $10 to be paid out for your sales.";
+      renderObj.msg =
+        "Reach a balance of at least $10 to be paid out for your sales.";
     }
 
     if (user.inreview == false && payoutDateExpired == false) {
@@ -74,7 +76,7 @@ const updatePayout = async (user) => {
 
     if (payoutDateExpired) {
       user.issue = true;
-      await user.save()
+      await user.save();
       renderMsg.push({
         msg: "<h3>There is an issue with your account, please contact customer support.</h3>",
       });
@@ -91,7 +93,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     await endReviewPeriod(req.user);
     const userResult = await updatePayout(req.user);
 
-    let userbalance = req.user.currentbalance.toFixed(2)
+    let userbalance = req.user.currentbalance.toFixed(2);
 
     res.render("payout", {
       user: req.user,

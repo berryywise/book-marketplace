@@ -7,8 +7,8 @@ const User = require("../models/user");
 const { check, validationResult } = require("express-validator");
 const timeoutMiddleware = require("../middleware/timeout");
 const ensureAuthenticated = require("../middleware/auth");
-let fs = require('fs');
-const ejs = require('ejs');
+let fs = require("fs");
+const ejs = require("ejs");
 
 const router = express.Router();
 
@@ -24,12 +24,11 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const templatePath = './views/email_confirm.ejs';
-const templateContent = fs.readFileSync(templatePath, 'utf-8');
+const templatePath = "./views/email_confirm.ejs";
+const templateContent = fs.readFileSync(templatePath, "utf-8");
 
-const resetTemplatePath = './views/password-forgot.ejs';
-const resetTemplateContent = fs.readFileSync(resetTemplatePath, 'utf-8');
-
+const resetTemplatePath = "./views/password-forgot.ejs";
+const resetTemplateContent = fs.readFileSync(resetTemplatePath, "utf-8");
 
 const validateSignUpRequest = [
   check("username")
@@ -112,8 +111,7 @@ router.get("/verify/:token", async (req, res) => {
     await user.save();
 
     res.render("confirmed", {
-      success:
-        "Thank you for confirming your email.",
+      success: "Thank you for confirming your email.",
     });
   });
 });
@@ -140,7 +138,7 @@ router.post(
 
       const mailOptions = await sendVerification(req.body, emailtoken);
 
-      await transporter.sendMail(mailOptions, (error, info) => {
+      await transporter.sendMail(mailOptions, (error) => {
         console.log(error);
         res.render("login", {
           success:
@@ -181,7 +179,7 @@ const resendVerification = async (body) => {
 
   const mailOptions = await sendVerification(body, emailtoken);
 
-  await transporter.sendMail(mailOptions, (error, info) => {
+  await transporter.sendMail(mailOptions, (error) => {
     console.log(error);
   });
 };
@@ -191,7 +189,9 @@ const sendVerification = async (body, emailtoken) => {
 
   const confirmationLink = `https://app.bookmaniac.net/verify/${emailtoken}`;
 
-  const renderedTemplate = ejs.render(templateContent, { confirmationLink: confirmationLink });
+  const renderedTemplate = ejs.render(templateContent, {
+    confirmationLink: confirmationLink,
+  });
 
   const mailOptions = {
     from: "Bookmaniac <info@bookmaniac.net>",
@@ -263,14 +263,14 @@ router.post(
         html: renderedTemplate,
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
+      transporter.sendMail(mailOptions, (error) => {
         if (error) {
           return res.send("Error sending email");
         }
 
         return res.render("reset-password", {
           success:
-          "Password reset has been send. Please check your inbox and / or spam box",
+            "Password reset has been send. Please check your inbox and / or spam box",
         });
       });
     } catch (error) {
@@ -281,54 +281,53 @@ router.post(
 );
 
 router.get("/reset/", timeoutMiddleware, async (req, res) => {
+  const currentTokens = await User.findOne({ resettoken: req.query.token });
 
-  const currentTokens = await User.findOne({resettoken: req.query.token})
-
-  if(!req.query.token) {
+  if (!req.query.token) {
     return res.redirect("404");
   }
 
-  if(!currentTokens) {
+  if (!currentTokens) {
     return res.send("Invalid or expired token.");
   }
 
-  res.render("reset", {tokenValue: req.query.token}); // Create a registration form
-
+  res.render("reset", { tokenValue: req.query.token }); // Create a registration form
 });
 
-router.post("/reset/", [
-  check("password")
-    .notEmpty()
-    .withMessage("Password is required")
-    .isLength({ min: 3 })
-    .withMessage("Password must be at least 3 characters long"),
-],timeoutMiddleware, async (req, res) => {
-
-  try {
-    
-    const errors = validationResult(req);
+router.post(
+  "/reset/",
+  [
+    check("password")
+      .notEmpty()
+      .withMessage("Password is required")
+      .isLength({ min: 3 })
+      .withMessage("Password must be at least 3 characters long"),
+  ],
+  timeoutMiddleware,
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.send("Password is required and must be at least 3 characters long");
+        return res.send(
+          "Password is required and must be at least 3 characters long"
+        );
       }
-  
-    const currentTokens = await User.findOne({resettoken: req.body.token})
-  
-    currentTokens.password = req.body.password;
-    currentTokens.resettoken = "";
-  
-    await currentTokens.save()
-  
-    return res.render("login", {
-      success:
-      "Password updated successfully",
-    });
 
-  } catch (error) {
-    console.error(error);
+      const currentTokens = await User.findOne({ resettoken: req.body.token });
+
+      currentTokens.password = req.body.password;
+      currentTokens.resettoken = "";
+
+      await currentTokens.save();
+
+      return res.render("login", {
+        success: "Password updated successfully",
+      });
+    } catch (error) {
+      console.error(error);
       return res.send("Token is expired or invalid");
+    }
   }
-
-
-});
+);
 
 module.exports = router;
