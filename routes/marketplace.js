@@ -1,6 +1,4 @@
 //TODO: implement payment system with crypto
-//TODO: book link download-able after paying
-
 
 
 const express = require('express');

@@ -82,6 +82,8 @@ router.post(
 
 router.get("/logout", (req, res) => {
   req.logout();
+  req.session = null;
+  req.clearCookie("session")
   res.redirect("/");
 });
 
@@ -187,7 +189,7 @@ const resendVerification = async (body) => {
 const sendVerification = async (body, emailtoken) => {
   const { email } = body;
 
-  const confirmationLink = `https://app.bookmaniac.net/verify/${emailtoken}`; //TODO:: change url production
+  const confirmationLink = `https://app.bookmaniac.net/verify/${emailtoken}`;
 
   const renderedTemplate = ejs.render(templateContent, { confirmationLink: confirmationLink });
 
@@ -250,7 +252,7 @@ router.post(
       await user.save();
 
       // Send email with the reset link
-      const resetLink = `https://app.bookmaniac.net/reset/?token=${resetToken}`; //TODO:: change url production
+      const resetLink = `https://app.bookmaniac.net/reset/?token=${resetToken}`;
 
       const renderedTemplate = ejs.render(resetTemplateContent, { resetLink });
 
