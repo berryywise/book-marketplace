@@ -82,7 +82,7 @@ router.post(
 router.get("/logout", (req, res) => {
   req.logout();
   req.session = null;
-  req.clearCookie("session")
+  res.clearCookie("session")
   res.redirect("/");
 });
 
